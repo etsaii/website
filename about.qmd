@@ -1,0 +1,27 @@
+---
+title: "Elaine Tsai Ballinger"
+sidebar: false
+about:
+    template: trestles
+    links:
+    - icon: twitter
+      href: https://twitter.com/etsaii
+    - icon: github
+      href: https://github.com/etsaii
+    - icon: linkedin
+      href: https://linkedin.com/in/etsaii
+---
+I seek experiences that are novel, challenging, and fun from building innovative tech products to . I'm driven by curiosity, excited by action, and have an evergrowing list of ideas and dreams. 
+
+Here you'll find my writing, data analysis and other apps and tools that I've enjoyed building.
+
+I'm a New Yorker at heart, raised in an American bubble in Taipei, Taiwan. Currently, I reside in Brooklyn, NY 
+
+## Highlights
+
+US Open Ballcrew
+
+
+## Education
+Bowdoin College | B.A in Economics | Brunswick, ME
+

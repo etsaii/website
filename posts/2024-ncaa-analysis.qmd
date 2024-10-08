@@ -1,0 +1,354 @@
+---
+title: "Statistical Analysis of 2024 Women's College Basketball"
+subtitle: " "
+date: "5/22/2023"
+categories:
+  - sports
+  - data
+---
+
+```{python}
+#| label: imports
+#| include: false
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import matplotlib as mpl
+import re
+```
+
+```{python}
+#| label: setup-data
+#| include: false
+
+# Set option to show all columns
+pd.set_option('display.max_columns', None)
+
+# Prepare files for dataframe
+def prepare_df(file_path):
+  df = pd.read_csv(file_path, header=None)
+
+  # Assign new headers
+  new_header = df.iloc[0] + '_' + df.iloc[1]
+  new_header = new_header.str.replace('Totals_', 'Team_')
+  df.columns = new_header
+  df.columns.values[1] = "School"
+
+  # Drop the first two rows and the first column
+  df = df.iloc[2:,1:]
+
+  # Drop columns with missing values and fill remaining missing values with 0
+  df = df.dropna(axis=1, how='all').fillna(0)
+
+  return df
+
+# Apply to files
+team_file_path = "wcb_files/wcb-school-stats.csv"
+opponent_file_path = "wcb_files/wcb-school-opp-stats.csv"
+
+raw_stats = prepare_df(team_file_path)
+raw_opponent_stats = prepare_df(opponent_file_path)
+
+raw_stats.head()
+```
+
+```{python}
+#| label: create-dataframe
+#| code-fold: true
+
+# Create dataframe for offensive and defensive team stats
+team_stats = pd.merge(raw_stats, raw_opponent_stats, on="School", how="inner")
+team_stats.columns = team_stats.columns.str.replace('_x', '')
+
+team_stats = team_stats[['School', 'Overall_SRS', 'Overall_SOS', 'Overall_W', 'Overall_L',
+                         'Team_FG', 'Team_FGA', 'Team_3P', 'Team_3PA',  'Team_FTA', 'Team_ORB', 'Team_TRB', 'Team_TOV',
+                         'Opponent_FG', 'Opponent_FGA', 'Opponent_3P', 'Opponent_3PA',  'Opponent_FTA', 'Opponent_ORB', 'Opponent_TRB', 'Opponent_TOV']].copy()
+
+# Set datatype
+team_stats = team_stats.astype({
+    'Overall_SRS': 'float',
+    'Overall_SOS': 'float',
+    'Overall_W': 'int',
+    'Overall_L': 'int'
+})
+
+# Cast all other columns to float
+cast_to_float = team_stats.columns[5:]
+team_stats[cast_to_float] = team_stats[cast_to_float].astype(float)
+
+team_stats.dtypes
+
+# Divide teams into SRS percentile
+bins = [0, 0.25, 0.5, 0.8, 1]
+labels = ['Bottom 25%', '25th-50th %', '50th-80th %', 'Top 20%']
+
+team_stats['Pct_Group'] = pd.qcut(team_stats['Overall_SRS'], q=bins, labels=labels)
+```
+
+## Statistical Analysis of 2024 Women's College Basketball
+
+Unlike Men's College Basketball, statistical analysis on the Women's game is relatively sparse. Since "Everybody watches Women's Sports", I decided to dig into the data
+
+
+Analysis for the Men's game is widely available and well documented, so I applied some of the most popular methodologies to basic team stats for the Women's game. In this article, I'll focus on calculating:
+
+2. Four Factors
+3. Offensive and Defensive ratings
+
+These stats, are most commonly used to better understanding the strengths of teams, predict the win probability of matchups, and identify the games that might be most exciting.
+
+The data used here comes from Sports Reference. While some of the data we be calculating could be pulled directly from Sports Reference's Advance Stats, we still calculate each stats since some of the method may deviate slightly.
+
+To build a winning March Madness Bracket, we need to know when two teams match up against each other, which team is more likely to win? A popular way to measure this statiscally has been the "Four Factors of Basketball Success" from Dean Oliver in his paper "Basketball on Paper". Similar to the moneyball of Basketball.
+
+## Four Factors of Basketball
+
+From a data analysis perspective, the four factors of success in basketball boils down to:
+
+1. Shooting the ball well: [Effective Field Goal % (eFG%)](eFG%)
+2. Avoiding turnovers: [Turnover %]()
+3. Second changes to score: [Offensive rebound %]()
+4. Getting to the foul line: [Free throw rate](free-throw-rate)
+
+While these stats can be found calculated in [Sports Reference's Advanced School Stats](https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html), I've chosen to calculated them myself.
+
+In order for us to measure the offensive and defensive efficiency of each team, we'll first calculate these stats for each team, this is their offense. For defense, we'll calculate how well their opponents do in each of these stats when playing against them.
+
+#### Effective Field Goal % (eFG%) {#sec-eFG%}
+```{python}
+#| label: fg-pct
+#| code-fold: true
+#| output: true
+
+# Calculate both offensive and defensive effective field goal percentage
+team_stats['Calc_Off_eFG%'] = (team_stats['Team_FG'] + 0.5 * team_stats['Team_3P']) / team_stats['Team_FGA']
+team_stats['Calc_Def_eFG%'] = (team_stats['Opponent_FG'] + 0.5 * team_stats['Opponent_3P']) / team_stats['Opponent_FGA']
+```
+
+The effective field goal % captures the teams ability to shoot the ball. Because at the end of the game, the team with the most points wins. If you're not scoring, you can't win. This is calculated as `Field Goals Made + 0.5 * 3-pointers Made) / Field Goals Attempted`. Unlike FG%, this calculation adds 50% more credit for 3-pointers made, since they are worth more points.
+
+
+
+
+#### Offensive Rebound % {#sec-off-reb%}
+```{python}
+#| label: rebound
+#| code-fold: true
+#| output: false
+
+# Create the defensive rebound column
+team_stats['Team_DRB'] = team_stats['Team_TRB'] - team_stats['Team_ORB']
+team_stats['Opponent_DRB'] = team_stats['Opponent_TRB'] - team_stats['Opponent_ORB']
+
+# Calculate offensive rebound %
+team_stats['Calc_ORB%'] = team_stats['Team_ORB'] / (team_stats['Team_ORB'] + team_stats['Opponent_DRB'])
+team_stats['Calc_Opp_ORB%'] = team_stats['Opponent_ORB'] / (team_stats['Opponent_ORB'] + team_stats['Team_DRB'])
+```
+
+`Offensive Rebounding % = Offensive Rebounds / (Offensive Rebounds + Opponent’s Defensive Rebounds)`
+
+
+
+
+#### Turnover % {#sec-turnover%}
+```{python}
+#| label: turnover
+#| code-fold: true
+#| output: false
+
+# Calculate Pace or Possessions
+team_stats['Pace'] = team_stats['Team_FGA'] - team_stats['Team_ORB'] + team_stats['Team_TOV'] + (0.475 * team_stats['Team_FTA'] )
+
+# Calculate Turnover %
+team_stats['Calc_Off_TOV%'] = team_stats['Team_TOV'] / team_stats['Pace']
+team_stats['Calc_Def_TOV%'] = team_stats['Opponent_TOV'] / team_stats['Pace']
+```
+
+`Turnover % = Turnovers / Possessions`
+
+
+#### Free Throw Rate {#free-throw-rate}
+```{python}
+#| label: ft-rate
+#| code-fold: true
+#| output: false
+
+team_stats['Calc_Off_FTR'] = team_stats['Team_FTA'] / team_stats['Team_FGA']
+team_stats['Calc_Def_FTR'] = team_stats['Opponent_FTA'] / team_stats['Opponent_FGA']
+```
+
+`Free Throw Rate = Free Throws Attempts / Field Goal Attempts`
+
+
+#### Relationship of Four Factors with Overall SRS
+Once each of these metrics has been calculated, let's evaulate the impact each metric has on the overall simple rating system of the team.
+
+```{python}
+#| code-fold: true
+#| column: screen-inset-shaded
+
+# Set up the figure with four subplots
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))  # 2x2 grid
+
+off_four_factors = team_stats[['School', 'Overall_SRS', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR']]
+
+# List of offensive factors
+offensive_factors = ['Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR']
+
+# Loop through the factors and plot each one against 'Overall_SRS'
+for ax, factor in zip(axes.flatten(), offensive_factors):
+    sns.regplot(
+        data=off_four_factors,
+        x=factor,
+        y='Overall_SRS',
+        ax=ax,
+        scatter_kws={'s': 10},
+        line_kws={'color': 'red', 'linewidth': 0.8}
+    )
+    ax.set_title(f'Relationship between {factor} and Overall_SRS')
+
+plt.suptitle('Impact of Offensive Four Factors on Overall SRS', y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
+
+```{python}
+#| code-fold: true
+
+# Set up the figure with four subplots
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))  # 2x2 grid
+
+def_four_factors = team_stats[['School', 'Overall_SRS', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']]
+
+# List of defensive factors
+defensive_factors = ['Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']
+
+# Loop through the factors and plot each one against 'Overall_SRS'
+for ax, factor in zip(axes.flatten(), defensive_factors):
+    sns.regplot(
+        data=def_four_factors,
+        x=factor,
+        y='Overall_SRS',
+        ax=ax,
+        scatter_kws={'s': 10},
+        line_kws={'color': 'red', 'linewidth': 0.8}
+    )
+    ax.set_title(f'Relationship between {factor} and Overall_SRS')
+
+plt.suptitle('Impact of Defensive Four Factors on Overall SRS', y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
+
+In all calculations, I use per game average since as a basketball fan, it allows me to reason about the data and catch mistakes easier. For example, if free throw attemps is 78, I'm able to recognize and issue witih my data. To increase accuracy calculations could be done on a per game basis before averaged out.
+
+
+Sources:
+https://kenpom.com/blog/four-factors/
+
+## Offensive & Defensive Efficiency
+
+
+
+```{python}
+team_stats['Calc_Off_Eff'] = 32.333 + 1.55 * team_stats['Calc_Off_eFG%'] * 100 \
+                                    + 0.47 * team_stats['Calc_ORB%'] * 100 \
+                                    - 1.55 * team_stats['Calc_Off_TOV%'] * 100 \
+                                    + 0.19 * team_stats['Calc_Off_FTR'] * 100
+
+sorted_df = team_stats.sort_values(by='Calc_Off_Eff', ascending=False)
+sorted_df[['School', 'Overall_SRS', 'Calc_Off_Eff', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR']].head(10)
+```
+
+```{python}
+team_stats['Calc_Def_Eff'] = 32.333 + 1.55 * team_stats['Calc_Def_eFG%'] * 100 \
+                                    + 0.47 * team_stats['Calc_Opp_ORB%'] * 100 \
+                                    - 1.55 * team_stats['Calc_Def_TOV%']* 100 \
+                                    + 0.19 * team_stats['Calc_Def_FTR'] * 100
+
+sorted_df = team_stats.sort_values(by='Calc_Def_Eff', ascending=True)
+sorted_df[['School', 'Overall_SRS', 'Calc_Def_Eff', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']].head(10)
+```
+
+```{python}
+#| code-fold: true
+#| column: screen-inset
+#| fig-cap: etsaii
+
+top_20 = team_stats[team_stats['Pct_Group'] == "Top 20%"]
+top20_4f = top_20[['School', 'Overall_SRS', 'Pace',
+                   'Calc_Off_Eff', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR',
+                   'Calc_Def_Eff', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']].copy()
+
+
+fig, ax = plt.subplots(figsize=(12,12))
+
+# Assign values
+labels = top20_4f.School
+x = top20_4f.Calc_Off_Eff
+y = top20_4f.Calc_Def_Eff
+
+# Set mean
+ax.axvline(x=x.mean(), linestyle='--', color='red')
+ax.axhline(y=y.mean(), linestyle='--', color='red')
+
+# Plot data
+for x0, y0, label in zip(x, y, labels):
+  plt.text(x0, y0, label, fontsize=8, ha='right', va='bottom')
+
+plt.scatter(x, y)
+
+# Add grid
+ax.grid(zorder=0, alpha=0.4)
+ax.set_axisbelow(True)
+
+ax.set_xlim(85, 120)
+ax.set_ylim(98, 70)
+
+# Add labels and text
+ax.set_xlabel('Adjusted Offensive Efficiency')
+ax.set_ylabel('Adjusted Defensive Efficiency')
+
+ax.text(0.99, 0.01, 'Better Offense\nWorst Defense',
+        verticalalignment='bottom', horizontalalignment='right',
+        transform=ax.transAxes,
+        color='green', fontsize=12)
+
+ax.text(0.99, 0.99, 'Better Offense\nBetter Defense',
+        verticalalignment='top', horizontalalignment='right',
+        transform=ax.transAxes,
+        color='green', fontsize=12)
+
+ax.text(0.01, 0.99, 'Worst Offense\nBetter Defense',
+        verticalalignment='top', horizontalalignment='left',
+        transform=ax.transAxes,
+        color='green', fontsize=12)
+
+ax.text(0.01, 0.01, 'Worst Offense\nWorst Defense',
+        verticalalignment='bottom', horizontalalignment='left',
+        transform=ax.transAxes,
+        color='green', fontsize=12)
+
+ax.set_title('2024 Women\'s NCAA Basketball Tiers')
+
+```
+
+
+
+### Relationship of Four Factors
+
+Once we have all four factors calculated, both for offense and defense, we can see how each factor impacts their SRS rating.
+
+
+
+In many of the analysis, we'll also compare Sports Reference's Simple Rating System (SRS) with the stats that we calculate. The Overall SRS, "takes into account average point differential and strength of schedule", where zero is average and a high positive number signals a strong team.
+
+Data Sources:
+Sports Reference: https://www.sports-reference.com/cbb/seasons/women/2024-ratings.html
+Massey Rating: https://masseyratings.com/cbw/ncaa-d1/ratings
+Sokol’s LRMC ratings: https://www2.isye.gatech.edu/~jsokol/lrmcW/
+Moore’s ratings: https://sonnymoorepowerratings.com/w-basket.htm

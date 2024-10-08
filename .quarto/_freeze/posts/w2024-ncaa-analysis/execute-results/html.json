@@ -1,0 +1,12 @@
+{
+  "hash": "179273cd865abeb15efc768756c43dae",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Statistical Analysis of 2024 Women's College Basketball\"\nsubtitle: \" \"\ndate: \"5/22/2023\"\ncategories:\n  - sports\n  - code\n---\n\n\n::: {#1c6f374e .cell execution_count=2}\n``` {.python .cell-code}\npd.set_option('display.max_columns', None)\n```\n:::\n\n\n## Statistical Analysis of 2024 Women's College Basketball\n\nUnlike Men's College Basketball, statistical analysis on the Women's game is relatively sparse. Since \"Everybody watches Women's Sports\", I decided to dig into the data\n\n\nAnalysis for the Men's game is widely available and well documented, so I applied some of the most popular methodologies to basic team stats for the Women's game. In this article, I'll focus on calculating:\n\n1. Pace\n2. Four Factors\n3. Offensive and Defensive ratings\n\nThese stats, are most commonly used to better understanding the strengths of teams, predict the win probability of matchups, and identify the games that might be most exciting.\n\nThe data used here comes from Sports Reference. While some of the data we be calculating could be pulled directly from Sports Reference's Advance Stats, we still calculate each stats since some of the method may deviate slightly.\n\nIn many of the analysis, we'll also compare Sports Reference's Simple Rating System (SRS) with the stats that we calculate. The Overall SRS, \"takes into account average point differential and strength of schedule\", where zero is average and a high positive number signals a strong team.\n\nData Sources:\nSports Reference: https://www.sports-reference.com/cbb/seasons/women/2024-ratings.html\nMassey Rating: https://masseyratings.com/cbw/ncaa-d1/ratings\nSokol’s LRMC ratings: https://www2.isye.gatech.edu/~jsokol/lrmcW/\nMoore’s ratings: https://sonnymoorepowerratings.com/w-basket.htm\n\n",
+    "supporting": [
+      "w2024-ncaa-analysis_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

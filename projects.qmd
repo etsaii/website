@@ -1,0 +1,10 @@
+---
+title: "Projects"
+listing:
+    - id: projects
+      template: projects.ejs
+      contents: projects.yml
+description: |
+    gallery of apps and tools
+---
+

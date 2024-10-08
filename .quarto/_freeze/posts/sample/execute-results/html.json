@@ -1,0 +1,12 @@
+{
+  "hash": "ac27fac812c1453e7ba0cb5726464a7f",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Post With Code\"\ndescription: \"Post description\"\ndate: \"5/22/2021\"\ncategories:\n  - news\n  - code\n  - analysis\n---\n\n\n# Introduction\n\nThis document demonstrates the use of a number of advanced page layout features to produce an attractive and usable document inspired by the Tufte handout style and the use of Tufte's styles in RMarkdown \n\n::: {#cell-fig-main-margin-cap .cell .caption-undefined execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![A figure with a longer caption. The figure appears in the main column, but the caption is placed in the margin.](sample_files/figure-html/fig-main-margin-cap-output-1.png){#fig-main-margin-cap width=450 height=439}\n:::\n:::\n\n\n",
+    "supporting": [
+      "sample_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

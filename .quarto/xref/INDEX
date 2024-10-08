@@ -1,0 +1,39 @@
+{
+  "index.qmd": {
+    "index.html": "d7394333"
+  },
+  "about.qmd": {
+    "about.html": "23f05399"
+  },
+  "writing.qmd": {
+    "writing.html": "9c6ca477"
+  },
+  "posts/sample.qmd": {
+    "sample.html": "2088bad6"
+  },
+  "posts/tuft.qmd": {
+    "tuft.html": "cb6e986a",
+    "tuft.tex": "76722422"
+  },
+  "posts/w2024-ncaa-analysis.qmd": {
+    "w2024-ncaa-analysis.html": "8492e6e1"
+  },
+  "posts/2024-ncaa-analysis.qmd": {
+    "2024-ncaa-analysis.html": "6fe1ab36"
+  },
+  "posts/usopen-better-pickleball-player.md": {
+    "usopen-better-pickleball-player.html": "079708c9"
+  },
+  "posts/amplified-vacation.qmd": {
+    "amplified-vacation.html": "b6f70dca"
+  },
+  "amplified-vacation.qmd": {
+    "amplified-vacation.html": "fe0e0830"
+  },
+  "projects.md": {
+    "projects.html": "2ffb67ea"
+  },
+  "projects.qmd": {
+    "projects.html": "786e0d17"
+  }
+}

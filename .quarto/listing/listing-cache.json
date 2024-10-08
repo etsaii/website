@@ -1,0 +1,10 @@
+{
+  "listingMap": {
+    "projects.qmd": [
+      "projects.yml"
+    ],
+    "writing.qmd": [
+      "posts"
+    ]
+  }
+}

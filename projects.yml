@@ -1,0 +1,4 @@
+- name: Vacation Boost
+  subtitle: Identify PTOs that extend vacation trips
+  href: https://etsaii.github.io/website/_apps/vacation-boost/vacation-boost.html
+  code: https://github.com/website/_apps/vacation-boost/vacation-boost.qmd
