@@ -1,5 +1,5 @@
 ---
-title: "Elaine T Ballinger"
+title: "Elaine Tsai Ballinger"
 ---
 
 This is a Quarto website.
