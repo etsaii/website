@@ -1,1 +1,28 @@
-/.quarto/
+# Quarto
+.quarto/
+_quarto.yml.bak
+
+# Build outputs
+docs/
+_site/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
