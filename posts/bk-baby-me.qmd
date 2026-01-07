@@ -1,0 +1,13 @@
+---
+title: "BK Baby and Me"
+subtitle: " "
+date: "1/7/2026"
+categories:
+  - apps
+---
+
+As a new parent in Brooklyn, I got tired of tracking Baby and Me activities across different sites then forgetting about them. To solve this, I built **BK Baby and Me** a single-page React app that displays all the weekly activities in one clean, filterable view. Then allows me to export the events to iCal for easy calendar integration.
+
+![BK Baby and Me app screenshot](bk-baby-me_files/screenshot.png)
+
+🔗 [View app](https://baby-me-bk.vercel.app) | [GitHub repo](https://github.com/etsaii/baby-me-bk)

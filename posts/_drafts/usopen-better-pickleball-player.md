@@ -1,5 +1,6 @@
 ---
 title: "How being a US Open Ballperson taught me to be a better pickleball player"
+draft: true
 subtitle: " "
 date: "9/13/2024"
 categories:
@@ -7,6 +8,12 @@ categories:
 ---
 
 ## How being a US Open Ballperson taught me to be a better pickleball player
+
+During my first year as a US Open Ball"girl", I spent much of the time practicing the job. Making sure I knew what to do once the ball was hit my way. Do I need to quickly grab it and roll it to the ball person at the net, do I need to watch it so I can serve the player first, could I quickly pick it up since the other back on my side is serving the player, or is it setpoint and I need to quickly run in and help with umbralla. There are a small number decisions that need to be made. However over the course of the 3 weeks, these decisions quickly become muscle memory. Similar to being an athlete of other sports, you start to recognize your next move in a split second the moment the ball goes out. 
+
+So during my second year as a ball "girl", I was able to enjoy and recognize new aspects of the game. When you're watching 3 weeks of tennis daily, right behind the player, you see the fuzz on the ball spray, you see when players start to beat themselves over, you hear arguments between players and coaches. 
+
+Here were some of the lessons 
 
 - Anticipate, anticipate, anticipate
 As a ballperson, we need to act quickly and make sure the balls are on the correct side of the court and immediately available for the players. We're taught to anticipate our next move so that once the play is over we're ready. Just like how a 2nd baseman needs to be prepared to turn 2, our reaction cannot interupt the flow of the game and is therefore a part of the game.

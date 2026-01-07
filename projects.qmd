@@ -1,10 +1,9 @@
 ---
 title: "Projects"
-listing:
-    - id: projects
-      template: projects.ejs
-      contents: projects.yml
-description: |
-    gallery of apps and tools
+listing: 
+    contents: posts
+    sort: "date des"
+    date-format: medium
+    categories: true
+    fields: [title, description, date, reading-time, categories]
 ---
-

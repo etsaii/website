@@ -1,0 +1,11 @@
+---
+title: "Notes"
+listing:
+    type: table
+    filter-ui: false
+    contents: notes
+    sort: "date des"
+    date-format: medium
+    categories: false
+    fields: [title, categories]
+---

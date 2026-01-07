@@ -1,9 +1,0 @@
----
-title: "Writing"
-listing: 
-    contents: posts
-    sort: "date des"
-    date-format: medium
-    categories: true
-    fields: [title, description, date, reading-time, categories]
----

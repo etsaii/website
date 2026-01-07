@@ -1,13 +1,13 @@
 [
   {
-    "listing": "/writing.html",
-    "items": [
-      "/posts/usopen-better-pickleball-player.html",
-      "/posts/2024-ncaa-analysis.html"
-    ]
+    "listing": "/notes.html",
+    "items": []
   },
   {
     "listing": "/projects.html",
-    "items": []
+    "items": [
+      "/posts/bk-baby-me.html",
+      "/posts/2024-ncaa-analysis.html"
+    ]
   }
 ]

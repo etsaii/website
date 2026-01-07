@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-05-22">
 
-<title>Statistical Analysis of 2024 Women’s College Basketball – Elaine T. Ballinger</title>
+<title>Statistical Analysis of 2024 Women’s College Basketball – Elaine Tsai</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Elaine T. Ballinger</span>
+    <span class="navbar-title">Elaine Tsai</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -135,12 +135,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../writing.html"> 
-<span class="menu-text">Writing</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../projects.html"> 
 <span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -220,29 +220,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="statistical-analysis-of-2024-womens-college-basketball" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-analysis-of-2024-womens-college-basketball">Statistical Analysis of 2024 Women’s College Basketball</h2>
-<p>Unlike Men’s College Basketball, statistical analysis on the Women’s game is relatively sparse. Since “Everybody watches Women’s Sports”, I decided to dig into the data</p>
-<p>Analysis for the Men’s game is widely available and well documented, so I applied some of the most popular methodologies to basic team stats for the Women’s game. In this article, I’ll focus on calculating:</p>
-<ol start="2" type="1">
-<li>Four Factors</li>
-<li>Offensive and Defensive ratings</li>
-</ol>
-<p>These stats, are most commonly used to better understanding the strengths of teams, predict the win probability of matchups, and identify the games that might be most exciting.</p>
-<p>The data used here comes from Sports Reference. While some of the data we be calculating could be pulled directly from Sports Reference’s Advance Stats, we still calculate each stats since some of the method may deviate slightly.</p>
-<p>To build a winning March Madness Bracket, we need to know when two teams match up against each other, which team is more likely to win? A popular way to measure this statiscally has been the “Four Factors of Basketball Success” from Dean Oliver in his paper “Basketball on Paper”. Similar to the moneyball of Basketball.</p>
+<p>Unlike Men’s College Basketball, statistical analysis on the Women’s game is relatively sparse. Since analysis for the Men’s game is widely available and well documented, I’ve applied some of the most popular methodologies to basic team stats for the Women’s game to better understand how strongly corralated the four factors are with the teams simple rating system, measure the offsive and defensive efficiency of each team, and visualize the strengths (and weaknesses) of each team. Let’s dive in!</p>
 </section>
 <section id="four-factors-of-basketball" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="four-factors-of-basketball">Four Factors of Basketball</h2>
-<p>From a data analysis perspective, the four factors of success in basketball boils down to:</p>
-<ol type="1">
-<li>Shooting the ball well: <a href="eFG%">Effective Field Goal % (eFG%)</a></li>
-<li>Avoiding turnovers: <a href="">Turnover %</a></li>
-<li>Second changes to score: <a href="">Offensive rebound %</a></li>
-<li>Getting to the foul line: <a href="free-throw-rate">Free throw rate</a></li>
-</ol>
-<p>While these stats can be found calculated in <a href="https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html">Sports Reference’s Advanced School Stats</a>, I’ve chosen to calculated them myself.</p>
-<p>In order for us to measure the offensive and defensive efficiency of each team, we’ll first calculate these stats for each team, this is their offense. For defense, we’ll calculate how well their opponents do in each of these stats when playing against them.</p>
-<section id="effective-field-goal-efg-sec-efg" class="level4">
-<h4 class="anchored" data-anchor-id="effective-field-goal-efg-sec-efg">Effective Field Goal % (eFG%) {#sec-eFG%}</h4>
+<p>The Four Factors designed by Dean Oliver in “Basketball on Paper” is considered the moneyball of Basketball to measure a team’s success. While these stats can be found calculated in <a href="https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html">Sports Reference’s Advanced School Stats</a>, we’ll calculated them to see how they correlate with the teams simple rating system then use the four factors to measure the offensive and defensive efficiency of each team.</p>
+<p>These four factors are:</p>
+<p><strong>Shooting the ball well measured by effective Field Goal % (eFG%)</strong></p>
 <div id="fg-pct" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
@@ -251,41 +235,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_eFG%'</span>] <span class="op">=</span> (team_stats[<span class="st">'Opponent_FG'</span>] <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> team_stats[<span class="st">'Opponent_3P'</span>]) <span class="op">/</span> team_stats[<span class="st">'Opponent_FGA'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>The effective field goal % captures the teams ability to shoot the ball. Because at the end of the game, the team with the most points wins. If you’re not scoring, you can’t win. This is calculated as <code>Field Goals Made + 0.5 * 3-pointers Made) / Field Goals Attempted</code>. Unlike FG%, this calculation adds 50% more credit for 3-pointers made, since they are worth more points.</p>
-</section>
-<section id="offensive-rebound-sec-off-reb" class="level4">
-<h4 class="anchored" data-anchor-id="offensive-rebound-sec-off-reb">Offensive Rebound % {#sec-off-reb%}</h4>
-<div id="rebound" class="cell" data-execution_count="5">
+<p>The effective field goal % captures the teams ability to shoot the ball. Because at the end of the game, the team with the most points wins. This is calculated as <code>Field Goals Made + 0.5 * 3-pointers Made) / Field Goals Attempted</code>. Unlike FG%, this calculation adds 50% more credit for 3-pointers made, since they are worth more points.</p>
+<p>** Avoiding turnovers - Turnover % **</p>
+<div id="turnover" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the defensive rebound column</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Team_DRB'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_TRB'</span>] <span class="op">-</span> team_stats[<span class="st">'Team_ORB'</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Opponent_DRB'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_TRB'</span>] <span class="op">-</span> team_stats[<span class="st">'Opponent_ORB'</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate offensive rebound %</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_ORB%'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_ORB'</span>] <span class="op">/</span> (team_stats[<span class="st">'Team_ORB'</span>] <span class="op">+</span> team_stats[<span class="st">'Opponent_DRB'</span>])</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Opp_ORB%'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_ORB'</span>] <span class="op">/</span> (team_stats[<span class="st">'Opponent_ORB'</span>] <span class="op">+</span> team_stats[<span class="st">'Team_DRB'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Pace or Possessions</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Pace'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_FGA'</span>] <span class="op">-</span> team_stats[<span class="st">'Team_ORB'</span>] <span class="op">+</span> team_stats[<span class="st">'Team_TOV'</span>] <span class="op">+</span> (<span class="fl">0.475</span> <span class="op">*</span> team_stats[<span class="st">'Team_FTA'</span>] )</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Turnover %</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Off_TOV%'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_TOV'</span>] <span class="op">/</span> team_stats[<span class="st">'Pace'</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_TOV%'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_TOV'</span>] <span class="op">/</span> team_stats[<span class="st">'Pace'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><code>Offensive Rebounding % = Offensive Rebounds / (Offensive Rebounds + Opponent’s Defensive Rebounds)</code></p>
-</section>
-<section id="turnover-sec-turnover" class="level4">
-<h4 class="anchored" data-anchor-id="turnover-sec-turnover">Turnover % {#sec-turnover%}</h4>
-<div id="turnover" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Pace or Possessions</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Pace'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_FGA'</span>] <span class="op">-</span> team_stats[<span class="st">'Team_ORB'</span>] <span class="op">+</span> team_stats[<span class="st">'Team_TOV'</span>] <span class="op">+</span> (<span class="fl">0.475</span> <span class="op">*</span> team_stats[<span class="st">'Team_FTA'</span>] )</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Turnover %</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Off_TOV%'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_TOV'</span>] <span class="op">/</span> team_stats[<span class="st">'Pace'</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_TOV%'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_TOV'</span>] <span class="op">/</span> team_stats[<span class="st">'Pace'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<p>Giving the ball away too often is a surefire way to lose a game. What percentage of possessions end in a turnover?</p>
 <p><code>Turnover % = Turnovers / Possessions</code></p>
-</section>
-<section id="free-throw-rate" class="level4">
-<h4 class="anchored" data-anchor-id="free-throw-rate">Free Throw Rate</h4>
+<p><strong>Second changes to score: Offensive rebound % </strong></p>
+<div id="rebound" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the defensive rebound column</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Team_DRB'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_TRB'</span>] <span class="op">-</span> team_stats[<span class="st">'Team_ORB'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Opponent_DRB'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_TRB'</span>] <span class="op">-</span> team_stats[<span class="st">'Opponent_ORB'</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate offensive rebound %</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_ORB%'</span>] <span class="op">=</span> team_stats[<span class="st">'Team_ORB'</span>] <span class="op">/</span> (team_stats[<span class="st">'Team_ORB'</span>] <span class="op">+</span> team_stats[<span class="st">'Opponent_DRB'</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Opp_ORB%'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_ORB'</span>] <span class="op">/</span> (team_stats[<span class="st">'Opponent_ORB'</span>] <span class="op">+</span> team_stats[<span class="st">'Team_DRB'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Offensive rebounds are a second change at scoring. So of the total rebounds happening while a team is on offense, how many are the offensive team getting them.</p>
+<p><code>Offensive Rebounding % = Offensive Rebounds / (Offensive Rebounds + Opponent’s Defensive Rebounds)</code></p>
+<p><strong>Getting to the foul line: Free throw rate</strong></p>
 <div id="ft-rate" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
@@ -293,12 +273,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_FTR'</span>] <span class="op">=</span> team_stats[<span class="st">'Opponent_FTA'</span>] <span class="op">/</span> team_stats[<span class="st">'Opponent_FGA'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><code>Free Throw Rate = Free Throws Attempts / Field Goal Attempts</code></p>
-</section>
+<p>Free throws are yet another attempt to score. So getting fouled<br>
+<code>Free Throw Rate = Free Throws Attempts / Field Goal Attempts</code></p>
 <section id="relationship-of-four-factors-with-overall-srs" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="relationship-of-four-factors-with-overall-srs">Relationship of Four Factors with Overall SRS</h4>
 <p>Once each of these metrics has been calculated, let’s evaulate the impact each metric has on the overall simple rating system of the team.</p>
-<div id="241dcace" class="cell page-columns page-full" data-execution_count="8">
+<div id="d0284b73" class="cell page-columns page-full" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
@@ -333,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="d8bd51f2" class="cell" data-execution_count="9">
+<div id="db198a89" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
@@ -374,7 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="offensive-defensive-efficiency" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="offensive-defensive-efficiency">Offensive &amp; Defensive Efficiency</h2>
-<div id="1e6a65d6" class="cell" data-execution_count="10">
+<p>In order for us to measure the offensive and defensive efficiency of each team, we’ll first calculate these stats for each team, this is their offense. For defense, we’ll calculate how well their opponents do in each of these stats when playing against them.</p>
+<div id="fd15bc72" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Off_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_TOV%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -506,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="7b632915" class="cell" data-execution_count="11">
+<div id="b916a16d" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Opp_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_TOV%'</span>]<span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -638,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="f1937bc6" class="cell page-columns page-full" data-execution_count="12">
+<div id="78b9f833" class="cell page-columns page-full" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top_20 <span class="op">=</span> team_stats[team_stats[<span class="st">'Pct_Group'</span>] <span class="op">==</span> <span class="st">"Top 20%"</span>]</span>
@@ -1147,7 +1128,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Copyright 2021, Elaine Ballinger</p>
+<p>Copyright 2024, Elaine Tsai</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

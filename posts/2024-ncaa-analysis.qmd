@@ -45,8 +45,8 @@ def prepare_df(file_path):
   return df
 
 # Apply to files
-team_file_path = "wcb_files/wcb-school-stats.csv"
-opponent_file_path = "wcb_files/wcb-school-opp-stats.csv"
+team_file_path = "2024-ncaa-analysis_files/wcb-school-stats.csv"
+opponent_file_path = "2024-ncaa-analysis_files/wcb-school-opp-stats.csv"
 
 raw_stats = prepare_df(team_file_path)
 raw_opponent_stats = prepare_df(opponent_file_path)
@@ -89,34 +89,15 @@ team_stats['Pct_Group'] = pd.qcut(team_stats['Overall_SRS'], q=bins, labels=labe
 
 ## Statistical Analysis of 2024 Women's College Basketball
 
-Unlike Men's College Basketball, statistical analysis on the Women's game is relatively sparse. Since "Everybody watches Women's Sports", I decided to dig into the data
-
-
-Analysis for the Men's game is widely available and well documented, so I applied some of the most popular methodologies to basic team stats for the Women's game. In this article, I'll focus on calculating:
-
-2. Four Factors
-3. Offensive and Defensive ratings
-
-These stats, are most commonly used to better understanding the strengths of teams, predict the win probability of matchups, and identify the games that might be most exciting.
-
-The data used here comes from Sports Reference. While some of the data we be calculating could be pulled directly from Sports Reference's Advance Stats, we still calculate each stats since some of the method may deviate slightly.
-
-To build a winning March Madness Bracket, we need to know when two teams match up against each other, which team is more likely to win? A popular way to measure this statiscally has been the "Four Factors of Basketball Success" from Dean Oliver in his paper "Basketball on Paper". Similar to the moneyball of Basketball.
+Unlike Men's College Basketball, statistical analysis on the Women's game is relatively sparse. Since analysis for the Men's game is widely available and well documented, I've applied some of the most popular methodologies to basic team stats for the Women's game to better understand how strongly corralated the four factors are with the teams simple rating system, measure the offsive and defensive efficiency of each team, and visualize the strengths (and weaknesses) of each team. Let's dive in!
 
 ## Four Factors of Basketball
 
-From a data analysis perspective, the four factors of success in basketball boils down to:
+The Four Factors designed by Dean Oliver in "Basketball on Paper" is considered the moneyball of Basketball to measure a team's success. While these stats can be found calculated in [Sports Reference's Advanced School Stats](https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html), we'll calculated them to see how they correlate with the teams simple rating system then use the four factors to measure the offensive and defensive efficiency of each team.
 
-1. Shooting the ball well: [Effective Field Goal % (eFG%)](eFG%)
-2. Avoiding turnovers: [Turnover %]()
-3. Second changes to score: [Offensive rebound %]()
-4. Getting to the foul line: [Free throw rate](free-throw-rate)
+These four factors are:
 
-While these stats can be found calculated in [Sports Reference's Advanced School Stats](https://www.sports-reference.com/cbb/seasons/women/2024-advanced-school-stats.html), I've chosen to calculated them myself.
-
-In order for us to measure the offensive and defensive efficiency of each team, we'll first calculate these stats for each team, this is their offense. For defense, we'll calculate how well their opponents do in each of these stats when playing against them.
-
-#### Effective Field Goal % (eFG%) {#sec-eFG%}
+**Shooting the ball well measured by effective Field Goal % (eFG%)**
 ```{python}
 #| label: fg-pct
 #| code-fold: true
@@ -127,12 +108,27 @@ team_stats['Calc_Off_eFG%'] = (team_stats['Team_FG'] + 0.5 * team_stats['Team_3P
 team_stats['Calc_Def_eFG%'] = (team_stats['Opponent_FG'] + 0.5 * team_stats['Opponent_3P']) / team_stats['Opponent_FGA']
 ```
 
-The effective field goal % captures the teams ability to shoot the ball. Because at the end of the game, the team with the most points wins. If you're not scoring, you can't win. This is calculated as `Field Goals Made + 0.5 * 3-pointers Made) / Field Goals Attempted`. Unlike FG%, this calculation adds 50% more credit for 3-pointers made, since they are worth more points.
+The effective field goal % captures the teams ability to shoot the ball. Because at the end of the game, the team with the most points wins. This is calculated as `Field Goals Made + 0.5 * 3-pointers Made) / Field Goals Attempted`. Unlike FG%, this calculation adds 50% more credit for 3-pointers made, since they are worth more points.
 
+** Avoiding turnovers - Turnover % **
+```{python}
+#| label: turnover
+#| code-fold: true
+#| output: false
 
+# Calculate Pace or Possessions
+team_stats['Pace'] = team_stats['Team_FGA'] - team_stats['Team_ORB'] + team_stats['Team_TOV'] + (0.475 * team_stats['Team_FTA'] )
 
+# Calculate Turnover %
+team_stats['Calc_Off_TOV%'] = team_stats['Team_TOV'] / team_stats['Pace']
+team_stats['Calc_Def_TOV%'] = team_stats['Opponent_TOV'] / team_stats['Pace']
+```
 
-#### Offensive Rebound % {#sec-off-reb%}
+Giving the ball away too often is a surefire way to lose a game. What percentage of possessions end in a turnover? 
+
+`Turnover % = Turnovers / Possessions`
+
+**Second changes to score: Offensive rebound % **
 ```{python}
 #| label: rebound
 #| code-fold: true
@@ -147,29 +143,13 @@ team_stats['Calc_ORB%'] = team_stats['Team_ORB'] / (team_stats['Team_ORB'] + tea
 team_stats['Calc_Opp_ORB%'] = team_stats['Opponent_ORB'] / (team_stats['Opponent_ORB'] + team_stats['Team_DRB'])
 ```
 
+Offensive rebounds are a second change at scoring. So of the total rebounds happening while a team is on offense, how many are the offensive team getting them.
+
 `Offensive Rebounding % = Offensive Rebounds / (Offensive Rebounds + Opponent’s Defensive Rebounds)`
 
 
+**Getting to the foul line: Free throw rate**
 
-
-#### Turnover % {#sec-turnover%}
-```{python}
-#| label: turnover
-#| code-fold: true
-#| output: false
-
-# Calculate Pace or Possessions
-team_stats['Pace'] = team_stats['Team_FGA'] - team_stats['Team_ORB'] + team_stats['Team_TOV'] + (0.475 * team_stats['Team_FTA'] )
-
-# Calculate Turnover %
-team_stats['Calc_Off_TOV%'] = team_stats['Team_TOV'] / team_stats['Pace']
-team_stats['Calc_Def_TOV%'] = team_stats['Opponent_TOV'] / team_stats['Pace']
-```
-
-`Turnover % = Turnovers / Possessions`
-
-
-#### Free Throw Rate {#free-throw-rate}
 ```{python}
 #| label: ft-rate
 #| code-fold: true
@@ -179,8 +159,8 @@ team_stats['Calc_Off_FTR'] = team_stats['Team_FTA'] / team_stats['Team_FGA']
 team_stats['Calc_Def_FTR'] = team_stats['Opponent_FTA'] / team_stats['Opponent_FGA']
 ```
 
+Free throws are yet another attempt to score. So getting fouled  
 `Free Throw Rate = Free Throws Attempts / Field Goal Attempts`
-
 
 #### Relationship of Four Factors with Overall SRS
 Once each of these metrics has been calculated, let's evaulate the impact each metric has on the overall simple rating system of the team.
@@ -251,6 +231,7 @@ Sources:
 https://kenpom.com/blog/four-factors/
 
 ## Offensive & Defensive Efficiency
+In order for us to measure the offensive and defensive efficiency of each team, we'll first calculate these stats for each team, this is their offense. For defense, we'll calculate how well their opponents do in each of these stats when playing against them.
 
 
 

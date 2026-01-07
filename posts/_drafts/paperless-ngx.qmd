@@ -1,0 +1,58 @@
+---
+title: "Going paperless with paperless-ngx"
+draft: true
+subtitle: " "
+date: "10/31/2024"
+categories:
+  - tech
+---
+
+My husband hates opening mail. I don't blame him, over 80% of the mail we receive is junk. But as the piles of paper stacked up, I knew we needed a better system. Here's our setup for automating the process of digitalizing basically everything in our lives.
+
+Solution:
+1. Load up all the mail in the scanner.
+2. Once the scanner has scaned the document and 
+3. Other documents can be sent to our paperless inbox via email or straight from the app.
+3. Process the mail in Paperless. 
+4. Two weekly digests go out, one for Brandon and I related to our person mail, any mailed related to his company, he recieves a at his work email. 
+
+## The Setup
+- Scanner:
+- Mobile App:
+- Desktop: paperless-ngx
+- I also created a Gmail account dedicated to recieve our documents.
+
+First we need to setup paperless-ngx.
+
+Copy this file: https://github.com/paperless-ngx/paperless-ngx/blob/dev/docker/compose/docker-compose.postgres-tika.yml
+
+I've left my ports to be 8000 however if you plan on using 8000, change it.
+
+This version allows us to consume Office documents.
+
+And this file: https://github.com/paperless-ngx/paperless-ngx/blob/dev/docker/compose/docker-compose.env
+
+Setup Docker
+`docker compose up -d`
+
+Create superuser `docker compose run --rm webserver createsuperuser`
+
+
+### Setting up Gmail
+
+While you don't have to, I created a Gmail account dedicated to recieve our documents. Turn on 2FA for this account.
+
+IMAP Server: [imap.gmail.com](http://imap.gmail.com/)  
+IMAP Port: 993  
+IMAP Security: SSL  
+Username: your entire e-mail address  
+Password: [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)  
+Encoding: UTF-8
+
+
+## Mobile App Setup
+I used Swift Paperless
+
+Since my paperless-ngx server is running locally, to login I'd entered the server's IP address and port.
+
+It would look something like this `http://192.168.x.x/XXXX`

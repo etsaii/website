@@ -1,9 +1,9 @@
 {
   "listingMap": {
-    "projects.qmd": [
-      "projects.yml"
+    "notes.qmd": [
+      "notes"
     ],
-    "writing.qmd": [
+    "projects.qmd": [
       "posts"
     ]
   }

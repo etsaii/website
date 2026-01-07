@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Elaine Tsai Ballinger"
+  title: "Elaine Tsai"
   navbar:
     background: light
     left:
@@ -11,11 +11,11 @@ website:
         href: index.qmd
       - text: About
         href: about.qmd
-      - text: Writing
-        href: writing.qmd
       - text: Projects
         href: projects.qmd
-  page-footer: "Copyright 2024, Elaine Ballinger"
+      - text: Notes
+        href: notes.qmd
+  page-footer: "Copyright 2024, Elaine Tsai"
 
 format:
   html:
