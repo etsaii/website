@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2023-05-22">
 
-<title>Statistical Analysis of 2024 Women’s College Basketball – Elaine Tsai</title>
+<title>Statistical Analysis of 2024 Women’s College Basketball</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,11 +115,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Elaine Tsai</span>
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -127,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -274,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="relationship-of-four-factors-with-overall-srs" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="relationship-of-four-factors-with-overall-srs">Relationship of Four Factors with Overall SRS</h4>
 <p>Once each of these metrics has been calculated, let’s evaulate the impact each metric has on the overall simple rating system of the team.</p>
-<div id="8c70e93f" class="cell page-columns page-full" data-execution_count="8">
+<div id="96a7b1b8" class="cell page-columns page-full" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
@@ -309,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="5687c17d" class="cell" data-execution_count="9">
+<div id="34812927" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
@@ -351,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="offensive-defensive-efficiency" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="offensive-defensive-efficiency">Offensive &amp; Defensive Efficiency</h2>
 <p>In order for us to measure the offensive and defensive efficiency of each team, we’ll first calculate these stats for each team, this is their offense. For defense, we’ll calculate how well their opponents do in each of these stats when playing against them.</p>
-<div id="c3e5768c" class="cell" data-execution_count="10">
+<div id="1ba0ef67" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Off_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_TOV%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -483,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="32619ca1" class="cell" data-execution_count="11">
+<div id="500fd49b" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Opp_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_TOV%'</span>]<span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -615,7 +610,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="d8369778" class="cell page-columns page-full" data-execution_count="12">
+<div id="d4924dca" class="cell page-columns page-full" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top_20 <span class="op">=</span> team_stats[team_stats[<span class="st">'Pct_Group'</span>] <span class="op">==</span> <span class="st">"Top 20%"</span>]</span>
@@ -1124,7 +1119,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>Copyright 2024, Elaine Tsai</p>
+<p><i class="bi bi-pen"></i> Elaine Tsai</p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
