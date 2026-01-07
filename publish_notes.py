@@ -36,10 +36,13 @@ def ensure_quarto_frontmatter(post, src_path, is_draft=False):
 
     #title
     if "title" not in fm or not fm["title"]:
-        first_line = post.content.split("\n", 1)[0].strip()
-        if first_line.startswith("#"):
-            # Remove leading # and any following spaces, but preserve the rest
-            fm["title"] = first_line.lstrip("#").lstrip()
+        if post.content and post.content.strip():
+            first_line = post.content.split("\n", 1)[0].strip()
+            if first_line.startswith("#"):
+                # Remove leading # and any following spaces, but preserve the rest
+                fm["title"] = first_line.lstrip("#").lstrip()
+            else:
+                fm["title"] = src_path.stem
         else:
             fm["title"] = src_path.stem
 
@@ -48,8 +51,12 @@ def ensure_quarto_frontmatter(post, src_path, is_draft=False):
         mod_time = datetime.fromtimestamp(src_path.stat().st_mtime)
         fm["date"] = mod_time.strftime("%Y-%m-%d")
 
-    #todo: tags should become categories
+    # Convert tags to categories for Quarto compatibility
     if post.metadata and "tags" in post.metadata and post.metadata["tags"]:
+        # Quarto uses "categories" instead of "tags"
+        if "categories" not in fm:
+            fm["categories"] = post.metadata["tags"]
+        # Keep tags as well for backwards compatibility
         fm["tags"] = post.metadata["tags"]
 
     #mark as draft if it's a new file
@@ -61,6 +68,12 @@ def ensure_quarto_frontmatter(post, src_path, is_draft=False):
 #--- MAIN FUNCTION ---
 def publish_notes():
     """Convert public notes to be published on the website."""
+    # Check if vault path exists
+    if not VAULT_PATH.exists():
+        print(f"❌ Error: Vault path does not exist: {VAULT_PATH}")
+        print("Please update VAULT_PATH in publish_notes.py to point to your Obsidian vault.")
+        return
+    
     # Create output directories if they don't exist
     OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
     DRAFTS_PATH.mkdir(parents=True, exist_ok=True)
@@ -114,8 +127,12 @@ def publish_notes():
         final_dest_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Write file
-        with open(final_dest_path, "w", encoding="utf-8") as f:
-            f.write(frontmatter.dumps(post))
+        try:
+            with open(final_dest_path, "w", encoding="utf-8") as f:
+                f.write(frontmatter.dumps(post))
+        except Exception as e:
+            print(f"⚠️  Error writing {final_dest_path}: {e}")
+            continue
     
     print(f"✅ {count} notes published to {OUTPUT_PATH.resolve()}")
     if draft_count > 0:

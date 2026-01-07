@@ -2,16 +2,16 @@
 title: "How being a US Open Ballperson taught me to be a better pickleball player"
 draft: true
 subtitle: " "
-date: "9/13/2024"
+date: "2024-09-13"
 categories:
   - sports
 ---
 
 ## How being a US Open Ballperson taught me to be a better pickleball player
 
-During my first year as a US Open Ball"girl", I spent much of the time practicing the job. Making sure I knew what to do once the ball was hit my way. Do I need to quickly grab it and roll it to the ball person at the net, do I need to watch it so I can serve the player first, could I quickly pick it up since the other back on my side is serving the player, or is it setpoint and I need to quickly run in and help with umbralla. There are a small number decisions that need to be made. However over the course of the 3 weeks, these decisions quickly become muscle memory. Similar to being an athlete of other sports, you start to recognize your next move in a split second the moment the ball goes out. 
+During my first year as a US Open ball person, I spent much of the time practicing the job. Making sure I knew what to do once the ball was hit my way. Do I need to quickly grab it and roll it to the ball person at the net? Do I need to watch it so I can serve the player first? Could I quickly pick it up since the other back on my side is serving the player? Or is it set point and I need to quickly run in and help with the umbrella? There are a small number of decisions that need to be made. However, over the course of the 3 weeks, these decisions quickly become muscle memory. Similar to being an athlete in other sports, you start to recognize your next move in a split second the moment the ball goes out. 
 
-So during my second year as a ball "girl", I was able to enjoy and recognize new aspects of the game. When you're watching 3 weeks of tennis daily, right behind the player, you see the fuzz on the ball spray, you see when players start to beat themselves over, you hear arguments between players and coaches. 
+So during my second year as a ball person, I was able to enjoy and recognize new aspects of the game. When you're watching 3 weeks of tennis daily, right behind the player, you see the fuzz on the ball spray, you see when players start to beat themselves, and you hear arguments between players and coaches. 
 
 Here were some of the lessons 
 

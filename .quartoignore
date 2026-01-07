@@ -1,0 +1,10 @@
+# Ignore CSV data files - they're only needed during execution, not in output
+**/*_files/*.csv
+**/*_data/*.csv
+posts/2024-ncaa-analysis_files/*.csv
+posts/2024-ncaa-analysis_data/*.csv
+
+# Ignore execute results (these are generated)
+**/*_files/execute-results/
+posts/2024-ncaa-analysis_files/execute-results/
+

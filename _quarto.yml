@@ -3,19 +3,16 @@ project:
   output-dir: docs
 
 website:
-  title: "Elaine Tsai"
   navbar:
     background: light
     left:
-      - text: Home
-        href: index.qmd
       - text: About
-        href: about.qmd
+        href: index.qmd
       - text: Projects
         href: projects.qmd
       - text: Notes
         href: notes.qmd
-  page-footer: "Copyright 2024, Elaine Tsai"
+  page-footer: "<i class=\"bi bi-pen\"></i> Elaine Tsai"
 
 format:
   html:

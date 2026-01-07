@@ -1,7 +1,27 @@
 ---
-title: "Elaine Tsai Ballinger"
+title: "Elaine Tsai"
+sidebar: false
+about:
+    template: trestles
+    links:
+    - icon: twitter
+      href: https://twitter.com/etsaii
+    - icon: github
+      href: https://github.com/etsaii
+    - icon: linkedin
+      href: https://linkedin.com/in/etsaii
 ---
+Previously a startup product manager at Twilio, Postmates, and RevOps. Now a full-time mom, building and vibe-coding one nap at a time.
 
-This is a Quarto website.
+I seek experiences that are novel, challenging, and fun - from shipping innovative tech products to exploring new hobbies. I'm driven by curiosity, motivated by action, and have an ever-growing list of ideas and dreams. 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I'm a New Yorker at heart, raised in an American bubble in Taipei, Taiwan. Currently, I reside in Brooklyn, NY.
+
+## Highlights
+
+US Open Ballcrew
+
+
+## Education
+Bowdoin College | B.A in Economics | Brunswick, ME
+

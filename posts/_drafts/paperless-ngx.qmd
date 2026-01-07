@@ -2,7 +2,7 @@
 title: "Going paperless with paperless-ngx"
 draft: true
 subtitle: " "
-date: "10/31/2024"
+date: "2024-10-31"
 categories:
   - tech
 ---
@@ -17,8 +17,8 @@ Solution:
 4. Two weekly digests go out, one for Brandon and I related to our person mail, any mailed related to his company, he recieves a at his work email. 
 
 ## The Setup
-- Scanner:
-- Mobile App:
+- Scanner: [To be filled in]
+- Mobile App: [To be filled in]
 - Desktop: paperless-ngx
 - I also created a Gmail account dedicated to recieve our documents.
 
@@ -40,7 +40,7 @@ Create superuser `docker compose run --rm webserver createsuperuser`
 
 ### Setting up Gmail
 
-While you don't have to, I created a Gmail account dedicated to recieve our documents. Turn on 2FA for this account.
+While you don't have to, I created a Gmail account dedicated to receive our documents. Turn on 2FA for this account.
 
 IMAP Server: [imap.gmail.com](http://imap.gmail.com/)  
 IMAP Port: 993  

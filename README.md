@@ -74,20 +74,20 @@ The website includes a notes section that pulls content from your Obsidian vault
 
 3. **Review the output**:
    - Published notes are copied to `notes/` directory
-   - New notes are added to `notes/drafts/` as drafts
+   - New notes are added to `notes/_drafts/` as drafts
    - Existing notes in `notes/` are updated in place
    - The script will print how many notes were processed
 
 4. **Review drafts**:
-   - Check `notes/drafts/` for new notes
-   - When ready to publish, move them from `notes/drafts/` to `notes/`
+   - Check `notes/_drafts/` for new notes
+   - When ready to publish, move them from `notes/_drafts/` to `notes/`
    - Or manually remove the `draft: true` frontmatter
 
 ### Notes Workflow
 
 1. Write notes in Obsidian with `dg-publish: true`
 2. Run `python publish_notes.py` to sync notes
-3. Review new notes in `notes/drafts/`
+3. Review new notes in `notes/_drafts/`
 4. Move approved notes from drafts to `notes/` or edit their frontmatter
 5. Render/preview the site to see changes
 
@@ -160,9 +160,9 @@ website/
 ├── projects.qmd         # Projects listing page
 ├── notes.qmd            # Notes listing page
 ├── posts/               # Blog posts and projects
-│   └── drafts/          # Draft posts
+│   └── _drafts/          # Draft posts
 ├── notes/               # Published notes (generated)
-│   └── drafts/          # Draft notes (generated)
+│   └── _drafts/         # Draft notes (generated)
 ├── docs/                # Rendered website output
 ├── styles.css           # Custom CSS
 ├── publish_notes.py     # Notes generation script

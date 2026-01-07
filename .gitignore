@@ -3,7 +3,6 @@
 _quarto.yml.bak
 
 # Build outputs
-docs/
 _site/
 
 # Python
@@ -26,3 +25,5 @@ __pycache__/
 *.swp
 *.swo
 *~
+
+/.quarto/
