@@ -1,13 +1,15 @@
 [
   {
-    "listing": "/notes.html",
-    "items": []
-  },
-  {
     "listing": "/projects.html",
     "items": [
       "/posts/bk-baby-me.html",
       "/posts/2024-ncaa-analysis.html"
+    ]
+  },
+  {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/2026-events.html"
     ]
   }
 ]

@@ -1,24 +1,31 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Elaine Tsai",
+    "objectID": "notes/2026-events.html",
+    "href": "notes/2026-events.html",
+    "title": "2026 Events",
     "section": "",
-    "text": "Previously a startup product manager at Twilio, Postmates, and RevOps. Now a full-time mom, building and vibe-coding one nap at a time.\nI seek experiences that are novel, challenging, and fun - from shipping innovative tech products to exploring new hobbies. I’m driven by curiosity, motivated by action, and have an ever-growing list of ideas and dreams.\nI’m a New Yorker at heart, raised in an American bubble in Taipei, Taiwan. Currently, I reside in Brooklyn, NY."
+    "text": "2026 Events\n\nJoin us at these music shows and events this year. If we’re missing anything awesome and you’d recommend we attend, let us know.\n\nMay 15-17 - EDC Las Vegas\nJune 6 - Gov Ball @ Flushing Meadows\nJune 11 or 12 (Fri or Sat) - Martin Garrix @ Barclays, 8pm\nWe haven’t gotten tickets yet. Let us know if you’re interested and we can get tix together.\nJuly 18 - Anjunadeep @ Central Park, 3-10pm\nTrance in Central Park in the Summer before 10pm? This is the NYC dream!\nPurchased Bleacher tix (Tix)\nAug 22 - Alesso @ Brooklyn Army Terminal: Pier 4\nDoors open 3pm. Purchased GA tix (Tix)\n\nTentatively Planned\nOctober (TBD) - Diplo 5K\n\nWe also have season tickets to NY Liberty @Barclays Center. Let us know if you ever want to check out a WNBA game."
   },
   {
-    "objectID": "index.html#highlights",
-    "href": "index.html#highlights",
-    "title": "Elaine Tsai",
-    "section": "Highlights",
-    "text": "Highlights\nUS Open Ballcrew"
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "BK Baby and Me\n\n\n \n\n\n\napps\n\n\n\n\n\n\n\n\n\nJan 7, 2026\n\n\n1 min\n\n\n\n\n\n\n\nStatistical Analysis of 2024 Women’s College Basketball\n\n\n \n\n\n\nsports\n\n\ndata\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n9 min\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Elaine Tsai",
-    "section": "Education",
-    "text": "Education\nBowdoin College | B.A in Economics | Brunswick, ME"
+    "objectID": "posts/bk-baby-me.html",
+    "href": "posts/bk-baby-me.html",
+    "title": "BK Baby and Me",
+    "section": "",
+    "text": "As a new parent in Brooklyn, I got tired of tracking Baby and Me activities across different sites then forgetting about them. To solve this, I built BK Baby and Me a single-page React app that displays all the weekly activities in one clean, filterable view. Then allows me to export the events to iCal for easy calendar integration.\n\n\n\nBK Baby and Me app screenshot\n\n\n🔗 View app | GitHub repo"
+  },
+  {
+    "objectID": "notes.html",
+    "href": "notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n\n\n\n\n\nTitle\n\n\nCategories\n\n\n\n\n\n\n2026 Events\n\n\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2024-ncaa-analysis.html",
@@ -49,24 +56,24 @@
     "text": "Offensive & Defensive Efficiency\nIn order for us to measure the offensive and defensive efficiency of each team, we’ll first calculate these stats for each team, this is their offense. For defense, we’ll calculate how well their opponents do in each of these stats when playing against them.\n\nteam_stats['Calc_Off_Eff'] = 32.333 + 1.55 * team_stats['Calc_Off_eFG%'] * 100 \\\n                                    + 0.47 * team_stats['Calc_ORB%'] * 100 \\\n                                    - 1.55 * team_stats['Calc_Off_TOV%'] * 100 \\\n                                    + 0.19 * team_stats['Calc_Off_FTR'] * 100\n\nsorted_df = team_stats.sort_values(by='Calc_Off_Eff', ascending=False)\nsorted_df[['School', 'Overall_SRS', 'Calc_Off_Eff', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR']].head(10)\n\n\n\n\n\n\n\n\nSchool\nOverall_SRS\nCalc_Off_Eff\nCalc_Off_eFG%\nCalc_ORB%\nCalc_Off_TOV%\nCalc_Off_FTR\n\n\n\n\n124\nIowa NCAA\n37.05\n115.024700\n0.579465\n0.312408\n0.177928\n0.303698\n\n\n270\nSouth Carolina NCAA\n45.27\n113.435192\n0.541765\n0.405128\n0.175164\n0.275686\n\n\n102\nGonzaga NCAA\n26.30\n111.769560\n0.557175\n0.388557\n0.192770\n0.246925\n\n\n174\nMichigan State NCAA\n26.69\n111.204764\n0.553755\n0.262712\n0.160003\n0.289095\n\n\n121\nIndiana NCAA\n29.50\n110.880181\n0.575790\n0.257436\n0.182287\n0.287092\n\n\n194\nNevada-Las Vegas NCAA\n19.63\n110.066279\n0.523977\n0.318841\n0.147565\n0.231782\n\n\n302\nTexas NCAA\n36.47\n109.837609\n0.521739\n0.419800\n0.190606\n0.339384\n\n\n59\nConnecticut NCAA\n37.65\n109.648191\n0.554330\n0.311306\n0.180385\n0.248543\n\n\n105\nGreen Bay NCAA\n14.22\n108.897663\n0.536096\n0.296651\n0.164052\n0.260803\n\n\n289\nStanford NCAA\n33.90\n107.932516\n0.520687\n0.386273\n0.179534\n0.240317\n\n\n\n\n\n\n\n\nteam_stats['Calc_Def_Eff'] = 32.333 + 1.55 * team_stats['Calc_Def_eFG%'] * 100 \\\n                                    + 0.47 * team_stats['Calc_Opp_ORB%'] * 100 \\\n                                    - 1.55 * team_stats['Calc_Def_TOV%']* 100 \\\n                                    + 0.19 * team_stats['Calc_Def_FTR'] * 100\n\nsorted_df = team_stats.sort_values(by='Calc_Def_Eff', ascending=True)\nsorted_df[['School', 'Overall_SRS', 'Calc_Def_Eff', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']].head(10)\n\n\n\n\n\n\n\n\nSchool\nOverall_SRS\nCalc_Def_Eff\nCalc_Def_eFG%\nCalc_Opp_ORB%\nCalc_Def_TOV%\nCalc_Def_FTR\n\n\n\n\n202\nNorfolk State NCAA\n1.29\n69.918558\n0.417879\n0.296595\n0.305444\n0.327273\n\n\n345\nWest Virginia NCAA\n27.52\n72.701254\n0.444087\n0.321665\n0.320728\n0.322600\n\n\n83\nFairfield NCAA\n5.03\n73.152050\n0.407407\n0.280582\n0.268881\n0.324217\n\n\n270\nSouth Carolina NCAA\n45.27\n73.995298\n0.367242\n0.280952\n0.210197\n0.216605\n\n\n16\nAuburn NCAA\n19.91\n74.435290\n0.416424\n0.303191\n0.281138\n0.362260\n\n\n293\nStony Brook\n8.96\n74.558590\n0.390671\n0.278618\n0.228701\n0.211856\n\n\n305\nTexas A&M-Corpus Christi NCAA\n-2.34\n74.704027\n0.400053\n0.303388\n0.251206\n0.265284\n\n\n114\nHoward\n-7.69\n75.147372\n0.398896\n0.321820\n0.262852\n0.347472\n\n\n205\nNorth Carolina A&T\n-0.95\n75.214453\n0.399694\n0.300813\n0.248231\n0.277182\n\n\n302\nTexas NCAA\n36.47\n75.503534\n0.433592\n0.275223\n0.272871\n0.280175\n\n\n\n\n\n\n\n\n\nCode\ntop_20 = team_stats[team_stats['Pct_Group'] == \"Top 20%\"]\ntop20_4f = top_20[['School', 'Overall_SRS', 'Pace',\n                   'Calc_Off_Eff', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR',\n                   'Calc_Def_Eff', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']].copy()\n\n\nfig, ax = plt.subplots(figsize=(12,12))\n\n# Assign values\nlabels = top20_4f.School\nx = top20_4f.Calc_Off_Eff\ny = top20_4f.Calc_Def_Eff\n\n# Set mean\nax.axvline(x=x.mean(), linestyle='--', color='red')\nax.axhline(y=y.mean(), linestyle='--', color='red')\n\n# Plot data\nfor x0, y0, label in zip(x, y, labels):\n  plt.text(x0, y0, label, fontsize=8, ha='right', va='bottom')\n\nplt.scatter(x, y)\n\n# Add grid\nax.grid(zorder=0, alpha=0.4)\nax.set_axisbelow(True)\n\nax.set_xlim(85, 120)\nax.set_ylim(98, 70)\n\n# Add labels and text\nax.set_xlabel('Adjusted Offensive Efficiency')\nax.set_ylabel('Adjusted Defensive Efficiency')\n\nax.text(0.99, 0.01, 'Better Offense\\nWorst Defense',\n        verticalalignment='bottom', horizontalalignment='right',\n        transform=ax.transAxes,\n        color='green', fontsize=12)\n\nax.text(0.99, 0.99, 'Better Offense\\nBetter Defense',\n        verticalalignment='top', horizontalalignment='right',\n        transform=ax.transAxes,\n        color='green', fontsize=12)\n\nax.text(0.01, 0.99, 'Worst Offense\\nBetter Defense',\n        verticalalignment='top', horizontalalignment='left',\n        transform=ax.transAxes,\n        color='green', fontsize=12)\n\nax.text(0.01, 0.01, 'Worst Offense\\nWorst Defense',\n        verticalalignment='bottom', horizontalalignment='left',\n        transform=ax.transAxes,\n        color='green', fontsize=12)\n\nax.set_title('2024 Women\\'s NCAA Basketball Tiers')\n\n\nText(0.5, 1.0, \"2024 Women's NCAA Basketball Tiers\")\netsaii\n\n\n\n\n\n\n\n\n\n\nRelationship of Four Factors\nOnce we have all four factors calculated, both for offense and defense, we can see how each factor impacts their SRS rating.\nIn many of the analysis, we’ll also compare Sports Reference’s Simple Rating System (SRS) with the stats that we calculate. The Overall SRS, “takes into account average point differential and strength of schedule”, where zero is average and a high positive number signals a strong team.\nData Sources: Sports Reference: https://www.sports-reference.com/cbb/seasons/women/2024-ratings.html Massey Rating: https://masseyratings.com/cbw/ncaa-d1/ratings Sokol’s LRMC ratings: https://www2.isye.gatech.edu/~jsokol/lrmcW/ Moore’s ratings: https://sonnymoorepowerratings.com/w-basket.htm"
   },
   {
-    "objectID": "notes.html",
-    "href": "notes.html",
-    "title": "Notes",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Elaine Tsai",
     "section": "",
-    "text": "Title\n\n\nCategories\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Previously a startup product manager at Twilio, Postmates, and RevOps. Now a full-time mom, building and vibe-coding one nap at a time.\nI seek experiences that are novel, challenging, and fun - from shipping innovative tech products to exploring new hobbies. I’m driven by curiosity, motivated by action, and have an ever-growing list of ideas and dreams.\nI’m a New Yorker at heart, raised in an American bubble in Taipei, Taiwan. Currently, I reside in Brooklyn, NY."
   },
   {
-    "objectID": "posts/bk-baby-me.html",
-    "href": "posts/bk-baby-me.html",
-    "title": "BK Baby and Me",
-    "section": "",
-    "text": "As a new parent in Brooklyn, I got tired of tracking Baby and Me activities across different sites then forgetting about them. To solve this, I built BK Baby and Me a single-page React app that displays all the weekly activities in one clean, filterable view. Then allows me to export the events to iCal for easy calendar integration.\n\n\n\nBK Baby and Me app screenshot\n\n\n🔗 View app | GitHub repo"
+    "objectID": "index.html#highlights",
+    "href": "index.html#highlights",
+    "title": "Elaine Tsai",
+    "section": "Highlights",
+    "text": "Highlights\nUS Open Ballcrew"
   },
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "BK Baby and Me\n\n\n \n\n\n\napps\n\n\n\n\n\n\n\n\n\nJan 7, 2026\n\n\n1 min\n\n\n\n\n\n\n\nStatistical Analysis of 2024 Women’s College Basketball\n\n\n \n\n\n\nsports\n\n\ndata\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\n9 min\n\n\n\n\n\n\nNo matching items"
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Elaine Tsai",
+    "section": "Education",
+    "text": "Education\nBowdoin College | B.A in Economics | Brunswick, ME"
   }
 ]
