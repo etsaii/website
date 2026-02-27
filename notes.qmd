@@ -2,10 +2,11 @@
 title: "Notes"
 listing:
     type: table
+    sort-ui: false
     filter-ui: false
     contents: notes
     sort: "date des"
     date-format: medium
     categories: false
-    fields: [title, categories]
+    fields: [date, title]
 ---

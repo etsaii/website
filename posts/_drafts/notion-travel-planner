@@ -7,11 +7,9 @@ categories:
   - apps
 ---
 
-An overengineered travel planner is too good to not share. 
+An overengineered travel planner is too good not to share. 
 
-Here are some of the features I have fun building into my Notion Travel Planner.
-- A packing list that updates based on the weather and activities.
-- A packing list that calculates the number of diapers you'll need based on the length of the trip.
+In my Notion Travel Planner, I've built out a packing list that updates based on the weather and activities and calculates the number of diapers you'll need based on the length of the trip.
 
 ![BK Baby and Me app screenshot](bk-baby-me_files/screenshot.png)
 

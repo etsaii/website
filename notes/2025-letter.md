@@ -1,3 +1,9 @@
+---
+draft: true
+---
+
+# 2025 Annual Letter
+
 2025 was year of many firsts. We're so grateful to have settled quite well into our "new" routines now.
 
 At the end of 2024, we moved into our new home in Brooklyn. It was a long drawn our process due to the back and forths with DOB and general hiccups of construction. However we're loving our new home near Prospect Park and the space we have to host all our friends and family. If you ever find yourself in New York and would like to spend some time in a quieter more family friendly neighborhood be sure to let us know!
@@ -15,9 +21,10 @@ Going into 2026, we're looking forward to be taking Liam on more trips and showi
 - Diplo 5K: This was one of our favorite events this year, a fairly relax run with a dance party all before lunch! It's likely in October in Flushing Meadows.
 - NYRR 6 Virtual Races: Gonna put that jogging stroller to use so we can do the Brooklyn Half in 2027.
 
-Our music shows & events lineup is also available here, if you're in the NYC join us.
+Our [music shows & events lineup is also available here](/notes/2026-events.html), if you're in the NYC join us.
 
 **Highlights of 2026:**
+
 - Best bites: Radio Bakery Foccacia Sandwiches and 2-sheet Lasana at Rolos
 - Best music show: Anyma at Sphere
 - Most eventful vacation: Roadtrip from Sedona to SLC, where we hiked in Grand Canyon, Zion, Bryce.

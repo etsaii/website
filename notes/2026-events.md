@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # 2026 Events
 
 > Join us at these music shows and events this year. If we're missing anything awesome and you'd recommend we attend, let us know. 
