@@ -1,1 +1,17 @@
 /* css styles */
+
+/* Customize date-modified field label to show as "Date Updated" */
+.listing-table th:has(+ th:contains("Title"))::before,
+.listing-table th:first-child::before {
+  content: "Date Updated";
+}
+
+/* Alternative: target the date-modified column header more specifically */
+table.listing-table th:first-child {
+  /* This will be applied if Quarto uses a specific class */
+}
+
+/* Use attribute selector if Quarto adds data attributes */
+th[data-field="date-modified"]::before {
+  content: "Date Updated";
+}

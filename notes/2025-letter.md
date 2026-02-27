@@ -1,8 +1,8 @@
 ---
+title: "2025 Annual Letter"
+date: last-modified
 draft: true
 ---
-
-# 2025 Annual Letter
 
 2025 was year of many firsts. We're so grateful to have settled quite well into our "new" routines now.
 
