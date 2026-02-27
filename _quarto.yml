@@ -5,6 +5,7 @@ project:
     - CNAME
 
 website:
+  draft-mode: unlinked
   navbar:
     background: light
     left:
