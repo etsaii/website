@@ -1,6 +1,5 @@
 ---
 title: "Statistical Analysis of 2024 Women's College Basketball"
-subtitle: " "
 date: "2023-05-22"
 categories:
   - sports
@@ -101,7 +100,6 @@ These four factors are:
 ```{python}
 #| label: fg-pct
 #| code-fold: true
-#| output: true
 
 # Calculate both offensive and defensive effective field goal percentage
 team_stats['Calc_Off_eFG%'] = (team_stats['Team_FG'] + 0.5 * team_stats['Team_3P']) / team_stats['Team_FGA']
@@ -114,7 +112,6 @@ The effective field goal % captures the teams ability to shoot the ball. Because
 ```{python}
 #| label: turnover
 #| code-fold: true
-#| output: false
 
 # Calculate Pace or Possessions
 team_stats['Pace'] = team_stats['Team_FGA'] - team_stats['Team_ORB'] + team_stats['Team_TOV'] + (0.475 * team_stats['Team_FTA'] )
@@ -132,7 +129,6 @@ Giving the ball away too often is a surefire way to lose a game. What percentage
 ```{python}
 #| label: rebound
 #| code-fold: true
-#| output: false
 
 # Create the defensive rebound column
 team_stats['Team_DRB'] = team_stats['Team_TRB'] - team_stats['Team_ORB']
@@ -153,7 +149,6 @@ Offensive rebounds are a second change at scoring. So of the total rebounds happ
 ```{python}
 #| label: ft-rate
 #| code-fold: true
-#| output: false
 
 team_stats['Calc_Off_FTR'] = team_stats['Team_FTA'] / team_stats['Team_FGA']
 team_stats['Calc_Def_FTR'] = team_stats['Opponent_FTA'] / team_stats['Opponent_FGA']
@@ -167,15 +162,25 @@ Once each of these metrics has been calculated, let's evaulate the impact each m
 
 ```{python}
 #| code-fold: true
-#| column: screen-inset-shaded
+#| column: body
+#| fig-width: 8
+#| fig-height: 6
 
 # Set up the figure with four subplots
-fig, axes = plt.subplots(2, 2, figsize=(12, 10))  # 2x2 grid
+fig, axes = plt.subplots(2, 2, figsize=(8, 6))  # 2x2 grid
 
 off_four_factors = team_stats[['School', 'Overall_SRS', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR']]
 
 # List of offensive factors
 offensive_factors = ['Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR']
+
+# Set smaller font sizes
+plt.rcParams.update({
+    'font.size': 8,
+    'axes.labelsize': 7,
+    'xtick.labelsize': 6,
+    'ytick.labelsize': 6
+})
 
 # Loop through the factors and plot each one against 'Overall_SRS'
 for ax, factor in zip(axes.flatten(), offensive_factors):
@@ -184,27 +189,38 @@ for ax, factor in zip(axes.flatten(), offensive_factors):
         x=factor,
         y='Overall_SRS',
         ax=ax,
-        scatter_kws={'s': 10},
-        line_kws={'color': 'red', 'linewidth': 0.8}
+        scatter_kws={'s': 8},
+        line_kws={'color': 'red', 'linewidth': 0.4}
     )
-    ax.set_title(f'Relationship between {factor} and Overall_SRS')
+    ax.set_title(f'Relationship between {factor} and Overall_SRS', fontsize=10)
 
-plt.suptitle('Impact of Offensive Four Factors on Overall SRS', y=1.02)
-plt.tight_layout()
+plt.suptitle('Impact of Offensive Four Factors on Overall SRS', y=0.995, fontsize=12)
+plt.tight_layout(rect=[0, 0, 1, 0.96])
 plt.show()
 ```
 
 
 ```{python}
 #| code-fold: true
+#| column: body
+#| fig-width: 8
+#| fig-height: 6
 
 # Set up the figure with four subplots
-fig, axes = plt.subplots(2, 2, figsize=(12, 10))  # 2x2 grid
+fig, axes = plt.subplots(2, 2, figsize=(8, 6))  # 2x2 grid
 
 def_four_factors = team_stats[['School', 'Overall_SRS', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']]
 
 # List of defensive factors
 defensive_factors = ['Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']
+
+# Set smaller font sizes
+plt.rcParams.update({
+    'font.size': 8,
+    'axes.labelsize': 7,
+    'xtick.labelsize': 7,
+    'ytick.labelsize': 7
+})
 
 # Loop through the factors and plot each one against 'Overall_SRS'
 for ax, factor in zip(axes.flatten(), defensive_factors):
@@ -213,13 +229,13 @@ for ax, factor in zip(axes.flatten(), defensive_factors):
         x=factor,
         y='Overall_SRS',
         ax=ax,
-        scatter_kws={'s': 10},
-        line_kws={'color': 'red', 'linewidth': 0.8}
+        scatter_kws={'s': 8},
+        line_kws={'color': 'red', 'linewidth': 0.4}
     )
-    ax.set_title(f'Relationship between {factor} and Overall_SRS')
+    ax.set_title(f'Relationship between {factor} and Overall_SRS', fontsize=10)
 
-plt.suptitle('Impact of Defensive Four Factors on Overall SRS', y=1.02)
-plt.tight_layout()
+plt.suptitle('Impact of Defensive Four Factors on Overall SRS', y=0.995, fontsize=12)
+plt.tight_layout(rect=[0, 0, 1, 0.96])
 plt.show()
 ```
 
@@ -257,7 +273,9 @@ sorted_df[['School', 'Overall_SRS', 'Calc_Def_Eff', 'Calc_Def_eFG%', 'Calc_Opp_O
 
 ```{python}
 #| code-fold: true
-#| column: screen-inset
+#| column: body
+#| fig-width: 8
+#| fig-height: 8
 #| fig-cap: etsaii
 
 top_20 = team_stats[team_stats['Pct_Group'] == "Top 20%"]
@@ -265,8 +283,14 @@ top20_4f = top_20[['School', 'Overall_SRS', 'Pace',
                    'Calc_Off_Eff', 'Calc_Off_eFG%', 'Calc_ORB%', 'Calc_Off_TOV%', 'Calc_Off_FTR',
                    'Calc_Def_Eff', 'Calc_Def_eFG%', 'Calc_Opp_ORB%', 'Calc_Def_TOV%', 'Calc_Def_FTR']].copy()
 
+# Set smaller font sizes
+plt.rcParams.update({
+    'font.size': 7,
+    'xtick.labelsize': 7,
+    'ytick.labelsize': 7
+})
 
-fig, ax = plt.subplots(figsize=(12,12))
+fig, ax = plt.subplots(figsize=(8, 8))
 
 # Assign values
 labels = top20_4f.School
@@ -274,14 +298,14 @@ x = top20_4f.Calc_Off_Eff
 y = top20_4f.Calc_Def_Eff
 
 # Set mean
-ax.axvline(x=x.mean(), linestyle='--', color='red')
-ax.axhline(y=y.mean(), linestyle='--', color='red')
+ax.axvline(x=x.mean(), linestyle='--', color='red', linewidth=0.8)
+ax.axhline(y=y.mean(), linestyle='--', color='red', linewidth=0.8)
 
 # Plot data
 for x0, y0, label in zip(x, y, labels):
   plt.text(x0, y0, label, fontsize=8, ha='right', va='bottom')
 
-plt.scatter(x, y)
+plt.scatter(x, y, s=30)
 
 # Add grid
 ax.grid(zorder=0, alpha=0.4)
@@ -291,31 +315,33 @@ ax.set_xlim(85, 120)
 ax.set_ylim(98, 70)
 
 # Add labels and text
-ax.set_xlabel('Adjusted Offensive Efficiency')
-ax.set_ylabel('Adjusted Defensive Efficiency')
+ax.set_xlabel('Adjusted Offensive Efficiency', fontsize=8)
+ax.set_ylabel('Adjusted Defensive Efficiency', fontsize=8)
 
 ax.text(0.99, 0.01, 'Better Offense\nWorst Defense',
         verticalalignment='bottom', horizontalalignment='right',
         transform=ax.transAxes,
-        color='green', fontsize=12)
+        color='green', fontsize=8)
 
 ax.text(0.99, 0.99, 'Better Offense\nBetter Defense',
         verticalalignment='top', horizontalalignment='right',
         transform=ax.transAxes,
-        color='green', fontsize=12)
+        color='green', fontsize=8)
 
 ax.text(0.01, 0.99, 'Worst Offense\nBetter Defense',
         verticalalignment='top', horizontalalignment='left',
         transform=ax.transAxes,
-        color='green', fontsize=12)
+        color='green', fontsize=8)
 
 ax.text(0.01, 0.01, 'Worst Offense\nWorst Defense',
         verticalalignment='bottom', horizontalalignment='left',
         transform=ax.transAxes,
-        color='green', fontsize=12)
+        color='green', fontsize=8)
 
-ax.set_title('2024 Women\'s NCAA Basketball Tiers')
+ax.set_title('2024 Women\'s NCAA Basketball Tiers', fontsize=12)
 
+plt.tight_layout()
+plt.show()
 ```
 
 
@@ -323,8 +349,6 @@ ax.set_title('2024 Women\'s NCAA Basketball Tiers')
 ### Relationship of Four Factors
 
 Once we have all four factors calculated, both for offense and defense, we can see how each factor impacts their SRS rating.
-
-
 
 In many of the analysis, we'll also compare Sports Reference's Simple Rating System (SRS) with the stats that we calculate. The Overall SRS, "takes into account average point differential and strength of schedule", where zero is average and a high positive number signals a strong team.
 

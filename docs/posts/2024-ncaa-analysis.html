@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -269,72 +269,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="relationship-of-four-factors-with-overall-srs" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="relationship-of-four-factors-with-overall-srs">Relationship of Four Factors with Overall SRS</h4>
 <p>Once each of these metrics has been calculated, let’s evaulate the impact each metric has on the overall simple rating system of the team.</p>
-<div id="0394198c" class="cell page-columns page-full" data-execution_count="8">
+<div id="fd074353" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))  <span class="co"># 2x2 grid</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))  <span class="co"># 2x2 grid</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>off_four_factors <span class="op">=</span> team_stats[[<span class="st">'School'</span>, <span class="st">'Overall_SRS'</span>, <span class="st">'Calc_Off_eFG%'</span>, <span class="st">'Calc_ORB%'</span>, <span class="st">'Calc_Off_TOV%'</span>, <span class="st">'Calc_Off_FTR'</span>]]</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># List of offensive factors</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>offensive_factors <span class="op">=</span> [<span class="st">'Calc_Off_eFG%'</span>, <span class="st">'Calc_ORB%'</span>, <span class="st">'Calc_Off_TOV%'</span>, <span class="st">'Calc_Off_FTR'</span>]</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the factors and plot each one against 'Overall_SRS'</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, factor <span class="kw">in</span> <span class="bu">zip</span>(axes.flatten(), offensive_factors):</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    sns.regplot(</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>off_four_factors,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>factor,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'Overall_SRS'</span>,</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        ax<span class="op">=</span>ax,</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        scatter_kws<span class="op">=</span>{<span class="st">'s'</span>: <span class="dv">10</span>},</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        line_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'red'</span>, <span class="st">'linewidth'</span>: <span class="fl">0.8</span>}</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Relationship between </span><span class="sc">{</span>factor<span class="sc">}</span><span class="ss"> and Overall_SRS'</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Impact of Offensive Four Factors on Overall SRS'</span>, y<span class="op">=</span><span class="fl">1.02</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set smaller font sizes</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">8</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: <span class="dv">7</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: <span class="dv">6</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: <span class="dv">6</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the factors and plot each one against 'Overall_SRS'</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, factor <span class="kw">in</span> <span class="bu">zip</span>(axes.flatten(), offensive_factors):</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    sns.regplot(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>off_four_factors,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>factor,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'Overall_SRS'</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        ax<span class="op">=</span>ax,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        scatter_kws<span class="op">=</span>{<span class="st">'s'</span>: <span class="dv">8</span>},</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        line_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'red'</span>, <span class="st">'linewidth'</span>: <span class="fl">0.4</span>}</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Relationship between </span><span class="sc">{</span>factor<span class="sc">}</span><span class="ss"> and Overall_SRS'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Impact of Offensive Four Factors on Overall SRS'</span>, y<span class="op">=</span><span class="fl">0.995</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.96</span>])</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div class="page-columns page-full">
 <figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-9-output-1.png" width="1142" height="984" class="figure-img column-screen-inset-shaded"></p>
+<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-9-output-1.png" width="771" height="582" class="figure-img column-body"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="4cda8d91" class="cell" data-execution_count="9">
+<div id="9e3b953e" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))  <span class="co"># 2x2 grid</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))  <span class="co"># 2x2 grid</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>def_four_factors <span class="op">=</span> team_stats[[<span class="st">'School'</span>, <span class="st">'Overall_SRS'</span>, <span class="st">'Calc_Def_eFG%'</span>, <span class="st">'Calc_Opp_ORB%'</span>, <span class="st">'Calc_Def_TOV%'</span>, <span class="st">'Calc_Def_FTR'</span>]]</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># List of defensive factors</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>defensive_factors <span class="op">=</span> [<span class="st">'Calc_Def_eFG%'</span>, <span class="st">'Calc_Opp_ORB%'</span>, <span class="st">'Calc_Def_TOV%'</span>, <span class="st">'Calc_Def_FTR'</span>]</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the factors and plot each one against 'Overall_SRS'</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, factor <span class="kw">in</span> <span class="bu">zip</span>(axes.flatten(), defensive_factors):</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    sns.regplot(</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>def_four_factors,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>factor,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'Overall_SRS'</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        ax<span class="op">=</span>ax,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        scatter_kws<span class="op">=</span>{<span class="st">'s'</span>: <span class="dv">10</span>},</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        line_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'red'</span>, <span class="st">'linewidth'</span>: <span class="fl">0.8</span>}</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Relationship between </span><span class="sc">{</span>factor<span class="sc">}</span><span class="ss"> and Overall_SRS'</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Impact of Defensive Four Factors on Overall SRS'</span>, y<span class="op">=</span><span class="fl">1.02</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set smaller font sizes</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">8</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: <span class="dv">7</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: <span class="dv">7</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: <span class="dv">7</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the factors and plot each one against 'Overall_SRS'</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, factor <span class="kw">in</span> <span class="bu">zip</span>(axes.flatten(), defensive_factors):</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    sns.regplot(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        data<span class="op">=</span>def_four_factors,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>factor,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'Overall_SRS'</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        ax<span class="op">=</span>ax,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        scatter_kws<span class="op">=</span>{<span class="st">'s'</span>: <span class="dv">8</span>},</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        line_kws<span class="op">=</span>{<span class="st">'color'</span>: <span class="st">'red'</span>, <span class="st">'linewidth'</span>: <span class="fl">0.4</span>}</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'Relationship between </span><span class="sc">{</span>factor<span class="sc">}</span><span class="ss"> and Overall_SRS'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Impact of Defensive Four Factors on Overall SRS'</span>, y<span class="op">=</span><span class="fl">0.995</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.96</span>])</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2024-ncaa-analysis_files/figure-html/cell-10-output-1.png" width="1140" height="984" class="figure-img"></p>
+<div class="cell-output cell-output-display page-columns page-full">
+<div class="page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-10-output-1.png" width="788" height="580" class="figure-img column-body"></p>
 </figure>
 </div>
 </div>
@@ -346,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="offensive-defensive-efficiency" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="offensive-defensive-efficiency">Offensive &amp; Defensive Efficiency</h2>
 <p>In order for us to measure the offensive and defensive efficiency of each team, we’ll first calculate these stats for each team, this is their offense. For defense, we’ll calculate how well their opponents do in each of these stats when playing against them.</p>
-<div id="7e49f864" class="cell" data-execution_count="10">
+<div id="da9a747b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Off_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_TOV%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -354,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sorted_df <span class="op">=</span> team_stats.sort_values(by<span class="op">=</span><span class="st">'Calc_Off_Eff'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>sorted_df[[<span class="st">'School'</span>, <span class="st">'Overall_SRS'</span>, <span class="st">'Calc_Off_Eff'</span>, <span class="st">'Calc_Off_eFG%'</span>, <span class="st">'Calc_ORB%'</span>, <span class="st">'Calc_Off_TOV%'</span>, <span class="st">'Calc_Off_FTR'</span>]].head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <div>
 
 
@@ -374,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">124</td>
-<td>Iowa&nbsp;NCAA</td>
+<td>Iowa</td>
 <td>37.05</td>
 <td>115.024700</td>
 <td>0.579465</td>
@@ -384,7 +400,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">270</td>
-<td>South Carolina&nbsp;NCAA</td>
+<td>South Carolina</td>
 <td>45.27</td>
 <td>113.435192</td>
 <td>0.541765</td>
@@ -394,7 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">102</td>
-<td>Gonzaga&nbsp;NCAA</td>
+<td>Gonzaga</td>
 <td>26.30</td>
 <td>111.769560</td>
 <td>0.557175</td>
@@ -404,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">174</td>
-<td>Michigan State&nbsp;NCAA</td>
+<td>Michigan State</td>
 <td>26.69</td>
 <td>111.204764</td>
 <td>0.553755</td>
@@ -414,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">121</td>
-<td>Indiana&nbsp;NCAA</td>
+<td>Indiana</td>
 <td>29.50</td>
 <td>110.880181</td>
 <td>0.575790</td>
@@ -424,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">194</td>
-<td>Nevada-Las Vegas&nbsp;NCAA</td>
+<td>Nevada-Las Vegas</td>
 <td>19.63</td>
 <td>110.066279</td>
 <td>0.523977</td>
@@ -434,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">302</td>
-<td>Texas&nbsp;NCAA</td>
+<td>Texas</td>
 <td>36.47</td>
 <td>109.837609</td>
 <td>0.521739</td>
@@ -444,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">59</td>
-<td>Connecticut&nbsp;NCAA</td>
+<td>Connecticut</td>
 <td>37.65</td>
 <td>109.648191</td>
 <td>0.554330</td>
@@ -454,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">105</td>
-<td>Green Bay&nbsp;NCAA</td>
+<td>Green Bay</td>
 <td>14.22</td>
 <td>108.897663</td>
 <td>0.536096</td>
@@ -464,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">289</td>
-<td>Stanford&nbsp;NCAA</td>
+<td>Stanford</td>
 <td>33.90</td>
 <td>107.932516</td>
 <td>0.520687</td>
@@ -478,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="f4c15627" class="cell" data-execution_count="11">
+<div id="6d28834a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Opp_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_TOV%'</span>]<span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -486,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>sorted_df <span class="op">=</span> team_stats.sort_values(by<span class="op">=</span><span class="st">'Calc_Def_Eff'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>sorted_df[[<span class="st">'School'</span>, <span class="st">'Overall_SRS'</span>, <span class="st">'Calc_Def_Eff'</span>, <span class="st">'Calc_Def_eFG%'</span>, <span class="st">'Calc_Opp_ORB%'</span>, <span class="st">'Calc_Def_TOV%'</span>, <span class="st">'Calc_Def_FTR'</span>]].head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="71">
 <div>
 
 
@@ -506,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">202</td>
-<td>Norfolk State&nbsp;NCAA</td>
+<td>Norfolk State</td>
 <td>1.29</td>
 <td>69.918558</td>
 <td>0.417879</td>
@@ -516,7 +532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">345</td>
-<td>West Virginia&nbsp;NCAA</td>
+<td>West Virginia</td>
 <td>27.52</td>
 <td>72.701254</td>
 <td>0.444087</td>
@@ -526,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">83</td>
-<td>Fairfield&nbsp;NCAA</td>
+<td>Fairfield</td>
 <td>5.03</td>
 <td>73.152050</td>
 <td>0.407407</td>
@@ -536,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">270</td>
-<td>South Carolina&nbsp;NCAA</td>
+<td>South Carolina</td>
 <td>45.27</td>
 <td>73.995298</td>
 <td>0.367242</td>
@@ -546,7 +562,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>Auburn&nbsp;NCAA</td>
+<td>Auburn</td>
 <td>19.91</td>
 <td>74.435290</td>
 <td>0.416424</td>
@@ -566,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">305</td>
-<td>Texas A&amp;M-Corpus Christi&nbsp;NCAA</td>
+<td>Texas A&amp;M-Corpus Christi</td>
 <td>-2.34</td>
 <td>74.704027</td>
 <td>0.400053</td>
@@ -596,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">302</td>
-<td>Texas&nbsp;NCAA</td>
+<td>Texas</td>
 <td>36.47</td>
 <td>75.503534</td>
 <td>0.433592</td>
@@ -610,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="5712b161" class="cell page-columns page-full" data-execution_count="12">
+<div id="791d6852" class="cell page-columns page-full" data-fig-height="8" data-fig-width="8" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top_20 <span class="op">=</span> team_stats[team_stats[<span class="st">'Pct_Group'</span>] <span class="op">==</span> <span class="st">"Top 20%"</span>]</span>
@@ -618,65 +634,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Calc_Off_Eff'</span>, <span class="st">'Calc_Off_eFG%'</span>, <span class="st">'Calc_ORB%'</span>, <span class="st">'Calc_Off_TOV%'</span>, <span class="st">'Calc_Off_FTR'</span>,</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Calc_Def_Eff'</span>, <span class="st">'Calc_Def_eFG%'</span>, <span class="st">'Calc_Opp_ORB%'</span>, <span class="st">'Calc_Def_TOV%'</span>, <span class="st">'Calc_Def_FTR'</span>]].copy()</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">12</span>))</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> top20_4f.School</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> top20_4f.Calc_Off_Eff</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> top20_4f.Calc_Def_Eff</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Set mean</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>ax.axvline(x<span class="op">=</span>x.mean(), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span>y.mean(), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x0, y0, label <span class="kw">in</span> <span class="bu">zip</span>(x, y, labels):</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  plt.text(x0, y0, label, fontsize<span class="op">=</span><span class="dv">8</span>, ha<span class="op">=</span><span class="st">'right'</span>, va<span class="op">=</span><span class="st">'bottom'</span>)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set smaller font sizes</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">7</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: <span class="dv">7</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: <span class="dv">7</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign values</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> top20_4f.School</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> top20_4f.Calc_Off_Eff</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> top20_4f.Calc_Def_Eff</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Set mean</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>ax.axvline(x<span class="op">=</span>x.mean(), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span>y.mean(), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Add grid</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>ax.grid(zorder<span class="op">=</span><span class="dv">0</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x0, y0, label <span class="kw">in</span> <span class="bu">zip</span>(x, y, labels):</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  plt.text(x0, y0, label, fontsize<span class="op">=</span><span class="dv">8</span>, ha<span class="op">=</span><span class="st">'right'</span>, va<span class="op">=</span><span class="st">'bottom'</span>)</span>
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">85</span>, <span class="dv">120</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">98</span>, <span class="dv">70</span>)</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and text</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Adjusted Offensive Efficiency'</span>)</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Adjusted Defensive Efficiency'</span>)</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.99</span>, <span class="fl">0.01</span>, <span class="st">'Better Offense</span><span class="ch">\n</span><span class="st">Worst Defense'</span>,</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'bottom'</span>, horizontalalignment<span class="op">=</span><span class="st">'right'</span>,</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.99</span>, <span class="fl">0.99</span>, <span class="st">'Better Offense</span><span class="ch">\n</span><span class="st">Better Defense'</span>,</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'top'</span>, horizontalalignment<span class="op">=</span><span class="st">'right'</span>,</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.01</span>, <span class="fl">0.99</span>, <span class="st">'Worst Offense</span><span class="ch">\n</span><span class="st">Better Defense'</span>,</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'top'</span>, horizontalalignment<span class="op">=</span><span class="st">'left'</span>,</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="st">'Worst Offense</span><span class="ch">\n</span><span class="st">Worst Defense'</span>,</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'bottom'</span>, horizontalalignment<span class="op">=</span><span class="st">'left'</span>,</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'2024 Women</span><span class="ch">\'</span><span class="st">s NCAA Basketball Tiers'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, s<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Add grid</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>ax.grid(zorder<span class="op">=</span><span class="dv">0</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>ax.set_axisbelow(<span class="va">True</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">85</span>, <span class="dv">120</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">98</span>, <span class="dv">70</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and text</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Adjusted Offensive Efficiency'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Adjusted Defensive Efficiency'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.99</span>, <span class="fl">0.01</span>, <span class="st">'Better Offense</span><span class="ch">\n</span><span class="st">Worst Defense'</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'bottom'</span>, horizontalalignment<span class="op">=</span><span class="st">'right'</span>,</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.99</span>, <span class="fl">0.99</span>, <span class="st">'Better Offense</span><span class="ch">\n</span><span class="st">Better Defense'</span>,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'top'</span>, horizontalalignment<span class="op">=</span><span class="st">'right'</span>,</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.01</span>, <span class="fl">0.99</span>, <span class="st">'Worst Offense</span><span class="ch">\n</span><span class="st">Better Defense'</span>,</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'top'</span>, horizontalalignment<span class="op">=</span><span class="st">'left'</span>,</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="st">'Worst Offense</span><span class="ch">\n</span><span class="st">Worst Defense'</span>,</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>        verticalalignment<span class="op">=</span><span class="st">'bottom'</span>, horizontalalignment<span class="op">=</span><span class="st">'left'</span>,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>        transform<span class="op">=</span>ax.transAxes,</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'green'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'2024 Women</span><span class="ch">\'</span><span class="st">s NCAA Basketball Tiers'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display column-screen-inset" data-execution_count="12">
-<pre><code>Text(0.5, 1.0, "2024 Women's NCAA Basketball Tiers")</code></pre>
-<p>etsaii</p>
-</div>
 <div class="cell-output cell-output-display page-columns page-full">
-<div class="page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-13-output-2.png" width="969" height="967" class="figure-img column-screen-inset"></p>
+<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-13-output-1.png" width="767" height="768" class="figure-img column-body"></p>
+<figcaption>etsaii</figcaption>
 </figure>
 </div>
 </div>

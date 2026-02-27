@@ -1,10 +1,9 @@
 ---
 title: "2025 Annual Letter"
 date: last-modified
-draft: true
 ---
 
-2025 was year of many firsts. We're so grateful to have settled quite well into our "new" routines now.
+2025 was year of many firsts and we're so grateful to have settled quite well into our "new" routines now.
 
 At the end of 2024, we moved into our new home in Brooklyn. It was a long drawn our process due to the back and forths with DOB and general hiccups of construction. However we're loving our new home near Prospect Park and the space we have to host all our friends and family. If you ever find yourself in New York and would like to spend some time in a quieter more family friendly neighborhood be sure to let us know!
 
