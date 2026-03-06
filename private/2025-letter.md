@@ -21,7 +21,7 @@ Going into 2026, we're looking forward to be taking Liam on more trips and showi
 - Diplo 5K: This was one of our favorite events this year, a fairly relax run with a dance party all before lunch! It's likely in October in Flushing Meadows.
 - NYRR 6 Virtual Races: Gonna put that jogging stroller to use so we can do the Brooklyn Half in 2027.
 
-Our [music shows & events lineup is also available here](/notes/2026-events.html), if you're in the NYC join us.
+Our [music shows & events lineup is also available here](/private/2026-events.html), if you're in the NYC join us.
 
 **Highlights of 2026:**
 
