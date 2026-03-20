@@ -19,11 +19,13 @@ Purchased Bleacher tix ([Tix](https://cityparksfoundation.org/events/anjunadeep/
 **Aug 22** - Alesso @ Brooklyn Army Terminal: Pier 4  
 Doors open 3pm. Purchased GA tix ([Tix](https://dice.fm/event/7dp5bp-alesso-22nd-aug-brooklyn-army-terminal-pier-4-new-york-city-tickets?lng=en-US))
 
+**Aug 29** - Empire of the Sun @ Forest Hills Stadium
 ---
 
 **Tentatively Planned**
 
 **October** (TBD) - Diplo 5K
+We're discovering that the best pregame to a day party might just be a 5K run.
 
 ---
 
