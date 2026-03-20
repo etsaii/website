@@ -1,5 +1,5 @@
 ---
-title: "2025 Annual Letter"
+title: "2025 BEL Ballinger's Family Letter"
 date: last-modified
 lightbox: true
 ---
