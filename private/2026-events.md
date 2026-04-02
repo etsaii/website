@@ -7,24 +7,24 @@ date: last-modified
 
 **May 15-17** - EDC Las Vegas
 
-**June 6** - Gov Ball @ Flushing Meadows
+**June 6 (Saturday)** - Gov Ball @ Flushing Meadows
 
-**June 11 or 12** (Fri or Sat) - Martin Garrix @ Barclays, 8pm  
+**June 11 or 12 (Fri or Sat)**  - Martin Garrix @ Barclays, 8pm  
 We haven't gotten tickets yet. Let us know if you're interested and we can get tix together.
 
-**July 18** - Anjunadeep @ Central Park, 3-10pm  
+**July 18 (Saturday)** - Anjunadeep @ Central Park, 3-10pm  
 Trance in Central Park in the Summer before 10pm? This is the NYC dream!  
 Purchased Bleacher tix ([Tix](https://cityparksfoundation.org/events/anjunadeep/))
 
-**Aug 22** - Alesso @ Brooklyn Army Terminal: Pier 4  
+**Aug 22 (Saturday)** - Alesso @ Brooklyn Army Terminal: Pier 4  
 Doors open 3pm. Purchased GA tix ([Tix](https://dice.fm/event/7dp5bp-alesso-22nd-aug-brooklyn-army-terminal-pier-4-new-york-city-tickets?lng=en-US))
 
-**Aug 29** - Empire of the Sun @ Forest Hills Stadium
----
+**Aug 29 (Saturday)** - Empire of the Sun @ Forest Hills Stadium, 6:30pm 
 
-**Tentatively Planned**
+**Sept 30 (Wednesday)** - Weezer @ Barclays, 7pm
+We have 2 extra tickets at $215 each, claim them and join us!
 
-**October** (TBD) - Diplo 5K
+**October 24 (Saturday)** - Diplo 5K
 We're discovering that the best pregame to a day party might just be a 5K run.
 
 ---

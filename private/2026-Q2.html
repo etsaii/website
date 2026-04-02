@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring Quarter 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1e3329;
+    --ink-dark: #142219;
+    --ink-mid: #3d5c4e;
+    --ink-light: #7a9e8e;
+    --cream: #f2ece0;
+    --warm: #faf6ee;
+    --rose: #b8694e;
+    --rose-mid: #cc8870;
+    --rose-pale: #f0e4dc;
+    --sage: #5d8c78;
+    --sage-pale: #ddeee7;
+    --sand: #b8a07a;
+    --sand-pale: #ede3ce;
+    --blue: #4d7a96;
+    --blue-pale: #d8eaf3;
+    --rule: rgba(30,51,41,0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--ink-dark);
+    min-height: 300px;
+    padding: 52px 48px 46px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 92% 15%, rgba(184,105,78,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 8% 85%, rgba(77,122,150,0.18) 0%, transparent 50%);
+  }
+  .cover-rule { width: 44px; height: 2px; background: var(--rose-mid); margin-bottom: 18px; position: relative; }
+  .cover-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--rose-mid); margin-bottom: 14px; position: relative;
+  }
+  .cover-title {
+    font-family: 'Lora', serif;
+    font-size: 58px;
+    font-weight: 400;
+    color: var(--warm);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    position: relative;
+    white-space: nowrap;
+  }
+  .cover-title em { font-style: italic; color: var(--rose-mid); }
+  .cover-sub {
+    margin-top: 16px; font-size: 12px; font-weight: 300;
+    color: rgba(250,246,238,0.45); letter-spacing: 0.08em; position: relative;
+  }
+
+  /* ANCHOR TAGS — prominent, memorable */
+  .cover-anchors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+    position: relative;
+  }
+  .cover-anchor {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink-dark);
+    background: var(--rose-mid);
+    padding: 5px 13px;
+    border-radius: 1px;
+    opacity: 0.92;
+    white-space: nowrap;
+  }
+  .cover-anchor.alt {
+    background: rgba(250,246,238,0.14);
+    color: rgba(250,246,238,0.8);
+    border: 1px solid rgba(250,246,238,0.18);
+  }
+
+  /* LAYOUT */
+  .page { max-width: 860px; margin: 0 auto; padding: 0 32px 64px; }
+
+  /* SECTION HEADER */
+  .sh { display: flex; align-items: center; gap: 16px; margin: 48px 0 20px; }
+  .sh-label { font-size: 10px; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-mid); white-space: nowrap; }
+  .sh-line { flex: 1; height: 1px; background: var(--rule); }
+
+  /* BREAKS */
+  .breaks { display: flex; flex-direction: column; gap: 12px; }
+  .break-card { background: var(--warm); border: 1px solid var(--rule); padding: 20px 24px; display: flex; gap: 20px; align-items: flex-start; }
+  .break-icon { font-size: 26px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+  .break-dates { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose); margin-bottom: 4px; }
+  .break-name { font-family: 'Lora', serif; font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .break-note { font-size: 12px; color: var(--ink-mid); font-weight: 400; }
+
+  /* SPINE */
+  .spine { display: flex; flex-direction: column; border: 1px solid var(--rule); }
+  .spine-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--rule); background: var(--warm); }
+  .spine-row:last-child { border-bottom: none; }
+  .spine-row.featured { background: var(--ink-dark); }
+  .spine-row.featured .spine-day { color: var(--rose-mid); border-right-color: rgba(255,255,255,0.08); }
+  .spine-row.featured .spine-act { color: var(--warm); }
+  .spine-row.featured .spine-note { color: rgba(250,246,238,0.5); }
+  .spine-day {
+    font-family: 'Lora', serif; font-size: 14px; font-style: italic;
+    color: var(--ink-mid); padding: 16px 20px; min-width: 130px;
+    border-right: 1px solid var(--rule); display: flex; align-items: center;
+  }
+  .spine-dot { width: 7px; height: 7px; border-radius: 50%; margin: 0 14px 0 20px; flex-shrink: 0; align-self: center; }
+  .spine-content { padding: 16px 20px 16px 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .spine-act { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .spine-note { font-size: 11px; color: var(--ink-mid); font-weight: 400; margin-top: 2px; }
+
+  /* RHYTHM */
+  .rhythm { display: flex; flex-direction: column; gap: 14px; }
+  .rhythm-card { background: var(--warm); border: 1px solid var(--rule); padding: 20px 24px; }
+  .rhythm-title { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mid); margin-bottom: 14px; }
+  .rhythm-blocks { display: flex; border: 1px solid var(--rule); overflow: hidden; border-radius: 2px; }
+  .rb { flex: 1; padding: 10px 6px; text-align: center; font-size: 11px; font-weight: 500; color: white; line-height: 1.3; }
+  .rb sub { display: block; font-size: 9px; opacity: 0.75; font-weight: 300; margin-top: 2px; }
+  .rb-wake { background: #9a8560; color: white; }
+  .rb-play { background: var(--sage); }
+  .rb-nap { background: var(--blue); }
+  .rb-mid { background: var(--rose); }
+  .rb-nap2 { background: #6a96b0; }
+  .rb-eve { background: var(--ink-dark); }
+  .rhythm-notes { margin-top: 12px; font-size: 12px; color: var(--ink-mid); font-weight: 400; line-height: 1.7; }
+  .rhythm-notes strong { font-weight: 600; color: var(--ink); }
+
+  /* FLOW CARD */
+  .flow-card { border: 1px solid var(--rule); padding: 18px 22px; background: var(--warm); }
+  .flow-card.blue-tint { background: var(--blue-pale); border-color: rgba(77,122,150,0.25); border-left: 4px solid var(--blue); }
+  .flow-card.sand-tint { background: var(--sand-pale); border-color: rgba(184,160,122,0.3); border-left: 4px solid var(--sand); }
+  .flow-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+  .flow-label.blue { color: var(--blue); }
+  .flow-label.sand { color: #8a7040; }
+  .flow-steps { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .fs { background: white; border: 1px solid var(--rule); padding: 5px 11px; border-radius: 2px; font-size: 11px; font-weight: 500; color: var(--ink); }
+  .fa { font-size: 11px; color: var(--ink-light); }
+
+  /* BANKS */
+  .bank { background: var(--warm); border: 1px solid var(--rule); }
+  .bank-header { padding: 16px 24px; border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; justify-content: space-between; }
+  .bank-title { font-family: 'Lora', serif; font-size: 17px; font-style: italic; color: var(--ink); }
+  .bank-count { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mid); }
+  .bank-list { display: flex; flex-direction: column; }
+  .bank-item { display: flex; align-items: flex-start; border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+  .bank-item:last-child { border-bottom: none; }
+  .bank-item:hover { background: var(--cream); }
+  .bank-num { font-family: 'Lora', serif; font-size: 13px; font-style: italic; color: var(--rose-mid); padding: 14px 16px 14px 24px; min-width: 52px; border-right: 1px solid var(--rule); }
+  .bank-text { padding: 14px 20px; flex: 1; }
+  .bank-main { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .bank-sub { font-size: 11px; color: var(--ink-mid); font-weight: 400; margin-top: 2px; }
+
+  /* GOALS */
+  .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .goal-section { background: var(--warm); border: 1px solid var(--rule); }
+  .goal-header { padding: 15px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .goal-header-rose { background: var(--rose-pale); }
+  .goal-header-sage { background: var(--sage-pale); }
+  .goal-emoji { font-size: 17px; }
+  .goal-title { font-family: 'Lora', serif; font-size: 17px; font-weight: 500; color: var(--ink); }
+  .goal-aspiration { padding: 13px 20px; border-bottom: 1px solid var(--rule); font-size: 12px; color: var(--ink-mid); font-weight: 400; font-style: italic; line-height: 1.65; }
+  .goal-list { display: flex; flex-direction: column; }
+  .goal-item { display: flex; align-items: flex-start; gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--rule); }
+  .goal-item:last-child { border-bottom: none; }
+  .goal-check { width: 15px; height: 15px; border: 1.5px solid rgba(30,51,41,0.25); border-radius: 2px; flex-shrink: 0; margin-top: 2px; background: white; }
+  .goal-text { font-size: 12.5px; color: var(--ink); line-height: 1.5; font-weight: 500; }
+  .goal-detail { font-size: 11px; color: var(--ink-mid); font-weight: 400; margin-top: 2px; }
+
+  /* STRUCTURE */
+  .structure-row { display: flex; border-bottom: 1px solid var(--rule); background: var(--warm); }
+  .structure-row:last-child { border-bottom: none; }
+  .structure-freq { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mid); padding: 13px 18px; min-width: 100px; border-right: 1px solid var(--rule); display: flex; align-items: center; }
+  .structure-act { padding: 13px 18px; font-size: 13px; color: var(--ink); display: flex; align-items: center; font-weight: 400; }
+
+  /* ARC */
+  .arc { border: 1px solid var(--rule); overflow: hidden; }
+  .arc-row { display: grid; grid-template-columns: 60px 180px 100px 1fr; border-bottom: 1px solid var(--rule); background: var(--warm); }
+  .arc-row:last-child { border-bottom: none; }
+  .arc-row.arc-header { background: var(--ink-dark); }
+  .arc-row.arc-active { background: var(--rose-pale); }
+  .arc-cell { padding: 14px 18px; font-size: 13px; color: var(--ink); border-right: 1px solid var(--rule); display: flex; align-items: center; font-weight: 400; }
+  .arc-cell:last-child { border-right: none; }
+  .arc-row.arc-header .arc-cell { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); }
+  .arc-q { font-family: 'Lora', serif; font-size: 17px; font-style: italic; color: var(--rose); font-weight: 500; }
+  .arc-badge { display: inline-block; background: var(--rose); color: white; font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; margin-left: 8px; }
+  .arc-note { margin-top: 14px; font-size: 12px; color: var(--ink-mid); font-weight: 400; font-style: italic; }
+
+  /* FOOTER */
+  .footer { background: var(--ink-dark); padding: 40px 48px; }
+  .footer-rule { width: 32px; height: 1px; background: var(--rose-mid); margin-bottom: 16px; }
+  .footer-text { font-family: 'Lora', serif; font-size: 15px; font-style: italic; font-weight: 400; color: rgba(242,236,224,0.45); line-height: 1.85; max-width: 560px; }
+  .footer-text strong { color: var(--rose-mid); font-style: normal; font-weight: 500; }
+
+  @media (max-width: 640px) {
+    .cover { padding: 40px 24px 36px; }
+    .cover-title { font-size: 38px; }
+    .page { padding: 0 20px 48px; }
+    .goals-grid { grid-template-columns: 1fr; }
+    .arc-row { grid-template-columns: 50px 1fr; }
+    .arc-cell:nth-child(3), .arc-cell:nth-child(4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-rule"></div>
+  <div class="cover-eyebrow">Quarterly Planner · Q2 2026</div>
+  <div class="cover-title">Spring Quarter <em>2026</em></div>
+  <div class="cover-sub">April 1 – July 12, 2026 &nbsp;·&nbsp; Liam: 9 → 12 months</div>
+  <div class="cover-anchors">
+    <span class="cover-anchor">CrossFit Mondays</span>
+    <span class="cover-anchor">Swim Thursdays</span>
+    <span class="cover-anchor">Manhattan Fridays</span>
+    <span class="cover-anchor alt">🏝️ Belize in May</span>
+    <span class="cover-anchor alt">🏔 Seattle in July</span>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- BREAKS -->
+  <div class="sh"><span class="sh-label">Major Events & Breaks</span><div class="sh-line"></div></div>
+  <div class="breaks">
+    <div class="break-card">
+      <div class="break-icon">🏝️</div>
+      <div>
+        <div class="break-dates">May 9–13 · 5 days</div>
+        <div class="break-name">Belize</div>
+        <div class="break-note">Wedding & beach time to celebrate a break</div>
+      </div>
+    </div>
+    <div class="break-card">
+      <div class="break-icon">🏔</div>
+      <div>
+        <div class="break-dates">July 2–12 · 10 days</div>
+        <div class="break-name">Seattle & Mt. Rainier</div>
+        <div class="break-note">Hiking trip to close out the quarter</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY SPINE -->
+  <div class="sh"><span class="sh-label">Weekly Spine</span><div class="sh-line"></div></div>
+  <div class="spine">
+    <div class="spine-row featured">
+      <div class="spine-day">Monday</div>
+      <div class="spine-dot" style="background:var(--rose-mid);"></div>
+      <div class="spine-content">
+        <div class="spine-act">CrossFit Baby & Me · 1:30pm</div>
+        <div class="spine-note">Liam wakes from Nap 1 ~12:30, feed, and head out</div>
+      </div>
+    </div>
+    <div class="spine-row">
+      <div class="spine-day">Tuesday</div>
+      <div class="spine-dot" style="background:var(--sage);"></div>
+      <div class="spine-content">
+        <div class="spine-act">Flex day</div>
+        <div class="spine-note">Pull from flex bank — no planning required</div>
+      </div>
+    </div>
+    <div class="spine-row">
+      <div class="spine-day">Wednesday</div>
+      <div class="spine-dot" style="background:var(--sage);"></div>
+      <div class="spine-content">
+        <div class="spine-act">Flex day</div>
+        <div class="spine-note">CrossFit backup if Monday was missed</div>
+      </div>
+    </div>
+    <div class="spine-row featured">
+      <div class="spine-day">Thursday</div>
+      <div class="spine-dot" style="background:var(--blue);"></div>
+      <div class="spine-content">
+        <div class="spine-act">Goldfish Swim · 10:30–11am</div>
+        <div class="spine-note">30 min walk from home · Leave by 10am</div>
+      </div>
+    </div>
+    <div class="spine-row featured">
+      <div class="spine-day">Friday</div>
+      <div class="spine-dot" style="background:var(--sand);"></div>
+      <div class="spine-content">
+        <div class="spine-act">Manhattan — outing + lunch with Dad</div>
+        <div class="spine-note">Near Union Square · Lunch ~1:30–2pm</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY RHYTHM -->
+  <div class="sh"><span class="sh-label">Daily Block Rhythm</span><div class="sh-line"></div></div>
+  <div class="rhythm">
+    <div class="rhythm-card">
+      <div class="rhythm-title">Typical Day · Wake 9–9:30am</div>
+      <div class="rhythm-blocks">
+        <div class="rb rb-wake">Morning<sub>Wake · Feed</sub></div>
+        <div class="rb rb-play">Play<sub>9:30–11</sub></div>
+        <div class="rb rb-nap">Nap 1<sub>~11–12:30</sub></div>
+        <div class="rb rb-mid">Midday<sub>Outing / Flex</sub></div>
+        <div class="rb rb-nap2">Nap 2<sub>~3–4:30</sub></div>
+        <div class="rb rb-eve">Evening<sub>Dinner · Bed 9pm</sub></div>
+      </div>
+      <div class="rhythm-notes">
+        <strong>Nap 1</strong> is your project time every single day — protect it like a paid commitment. &nbsp;·&nbsp; <strong>Nap 2</strong> flexes freely — stroller, car, or crib all count.
+      </div>
+    </div>
+
+    <div class="flow-card blue-tint">
+      <div class="flow-label blue">Thursday — Swim Day</div>
+      <div class="flow-steps">
+        <span class="fs">Leave by 10am</span><span class="fa">→</span>
+        <span class="fs">Swim 10:30–11</span><span class="fa">→</span>
+        <span class="fs">Walk home 30 min</span><span class="fa">→</span>
+        <span class="fs">Nap 1 ~12–1:30</span>
+      </div>
+    </div>
+
+    <div class="flow-card sand-tint">
+      <div class="flow-label sand">Friday — Manhattan Day</div>
+      <div class="flow-steps">
+        <span class="fs">Leave ~12:45–1</span><span class="fa">→</span>
+        <span class="fs">Feed & commute</span><span class="fa">→</span>
+        <span class="fs">Arrive Union Sq ~1:30</span><span class="fa">→</span>
+        <span class="fs">Lunch with Dad</span><span class="fa">→</span>
+        <span class="fs">Outing after lunch</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANHATTAN BANK -->
+  <div class="sh"><span class="sh-label">Friday Manhattan · Activity Bank</span><div class="sh-line"></div></div>
+  <div class="bank">
+    <div class="bank-header">
+      <div class="bank-title">Pick on the go — no pre-planning needed</div>
+      <div class="bank-count">10 activities</div>
+    </div>
+    <div class="bank-list">
+      <div class="bank-item"><div class="bank-num">01</div><div class="bank-text"><div class="bank-main">Central Park</div><div class="bank-sub">Zoo, carousel, or Great Lawn picnic — pick one or combine on the day</div></div></div>
+      <div class="bank-item"><div class="bank-num">02</div><div class="bank-text"><div class="bank-main">Neighborhood Wander</div><div class="bank-sub">West Village, NoHo, or Nolita — all walkable from Union Sq</div></div></div>
+      <div class="bank-item"><div class="bank-num">03</div><div class="bank-text"><div class="bank-main">American Museum of Natural History</div><div class="bank-sub">Free under 2 — Ocean Life hall is otherworldly for babies</div></div></div>
+      <div class="bank-item"><div class="bank-num">04</div><div class="bank-text"><div class="bank-main">Union Square Greenmarket</div><div class="bank-sub">Sensory, BLW scouting, great energy — right where you already are</div></div></div>
+      <div class="bank-item"><div class="bank-num">05</div><div class="bank-text"><div class="bank-main">The High Line + Hudson Yards Plaza</div><div class="bank-sub">Fresh air, public art, excellent stroller path — see the Vessel from outside</div></div></div>
+      <div class="bank-item"><div class="bank-num">06</div><div class="bank-text"><div class="bank-main">Washington Square Park</div><div class="bank-sub">Fountain, street musicians, peak people-watching</div></div></div>
+      <div class="bank-item"><div class="bank-num">07</div><div class="bank-text"><div class="bank-main">Governors Island</div><div class="bank-sub">Opens May — ferry ride is its own event, huge open space, very local feel</div></div></div>
+      <div class="bank-item"><div class="bank-num">08</div><div class="bank-text"><div class="bank-main">Pier 17 / South Street Seaport</div><div class="bank-sub">Waterfront, boats to point at, open air, easy to walk</div></div></div>
+      <div class="bank-item"><div class="bank-num">09</div><div class="bank-text"><div class="bank-main">Whitney Museum</div><div class="bank-sub">Stroller accessible, genuinely good art — stimulating for you</div></div></div>
+      <div class="bank-item"><div class="bank-num">10</div><div class="bank-text"><div class="bank-main">Culture Pick</div><div class="bank-sub">Bryant Park, The Strand, or Chelsea Galleries — depending on mood</div></div></div>
+    </div>
+  </div>
+
+  <!-- FLEX BANK -->
+  <div class="sh"><span class="sh-label">Flex Day Activity Bank · Tues & Wed</span><div class="sh-line"></div></div>
+  <div class="bank">
+    <div class="bank-header">
+      <div class="bank-title">Pull from this — no planning required</div>
+      <div class="bank-count">10 activities</div>
+    </div>
+    <div class="bank-list">
+      <div class="bank-item"><div class="bank-num">01</div><div class="bank-text"><div class="bank-main">Brooklyn Public Library Live Music</div><div class="bank-sub">Tuesdays 4–4:45pm — language-rich, social, other parents</div></div></div>
+      <div class="bank-item"><div class="bank-num">02</div><div class="bank-text"><div class="bank-main">Stroller Run or Walk</div><div class="bank-sub">Cardio or headspace — always a good call</div></div></div>
+      <div class="bank-item"><div class="bank-num">03</div><div class="bank-text"><div class="bank-main">Playground Swings & Sandbox</div><div class="bank-sub">Pure joy at this age — close supervision for sandbox</div></div></div>
+      <div class="bank-item"><div class="bank-num">04</div><div class="bank-text"><div class="bank-main">Sensory Play</div><div class="bank-sub">Water bin or edible sensory bin (cooked pasta, oats) — BLW safe for a mouthy baby</div></div></div>
+      <div class="bank-item"><div class="bank-num">05</div><div class="bank-text"><div class="bank-main">Baby Music + Dancing in the Kitchen</div><div class="bank-sub">10 minutes, zero prep — burns his energy before nap</div></div></div>
+      <div class="bank-item"><div class="bank-num">06</div><div class="bank-text"><div class="bank-main">Backyard Play Time</div><div class="bank-sub">Fresh air, grass textures, unstructured outdoor time</div></div></div>
+      <div class="bank-item"><div class="bank-num">07</div><div class="bank-text"><div class="bank-main">Green-Wood Cemetery Stroller Walk</div><div class="bank-sub">Peaceful, stunning grounds — one of Brooklyn's most underrated spots</div></div></div>
+      <div class="bank-item"><div class="bank-num">08</div><div class="bank-text"><div class="bank-main">Brooklyn Museum Stroller Walk</div><div class="bank-sub">Free under 12, beautiful Eastern Parkway approach — good for you too</div></div></div>
+      <div class="bank-item"><div class="bank-num">09</div><div class="bank-text"><div class="bank-main">Prospect Park Zoo</div><div class="bank-sub">Small, manageable scale — perfect for this age, doesn't overwhelm</div></div></div>
+      <div class="bank-item"><div class="bank-num">10</div><div class="bank-text"><div class="bank-main">Brooklyn Botanic Garden</div><div class="bank-sub">Especially beautiful April–June — cherry blossoms in May are not to be missed</div></div></div>
+    </div>
+  </div>
+
+  <!-- MY TIME & GOALS -->
+  <div class="sh"><span class="sh-label">My Time & Goals</span><div class="sh-line"></div></div>
+
+  <div class="bank" style="margin-bottom:20px;">
+    <div class="bank-header"><div class="bank-title">Structure</div></div>
+    <div class="structure-row"><div class="structure-freq">Daily</div><div class="structure-act">Nap 1 is protected project time — ~1 to 1.5 hours</div></div>
+    <div class="structure-row"><div class="structure-freq">Weekly</div><div class="structure-act">Pickleball 1–3x when coverage allows</div></div>
+    <div class="structure-row"><div class="structure-freq">Monthly</div><div class="structure-act">Solo hang with friends</div></div>
+  </div>
+
+  <div class="goals-grid">
+    <div class="goal-section">
+      <div class="goal-header goal-header-rose">
+        <span class="goal-emoji">💪</span>
+        <div class="goal-title">Physical Goals</div>
+      </div>
+      <div class="goal-aspiration">Work toward pre-pregnancy weight through consistent movement, structured training, and building a running habit this quarter.</div>
+      <div class="goal-list">
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">Virtual Mental Health Awareness Month Challenge</div><div class="goal-detail">May 1–31</div></div></div>
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">NYRR Virtual Global Running Day 5K</div><div class="goal-detail">May 30 – June 7</div></div></div>
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">CrossFit Baby & Me attendance</div><div class="goal-detail">Miss no more than 2 Mondays this quarter</div></div></div>
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">Rebuild DUPR rating</div><div class="goal-detail">Pickleball 1–3x per week · Prioritize mixed doubles for match volume</div></div></div>
+      </div>
+    </div>
+
+    <div class="goal-section">
+      <div class="goal-header goal-header-sage">
+        <span class="goal-emoji">🧠</span>
+        <div class="goal-title">Intellectual Goals</div>
+      </div>
+      <div class="goal-aspiration">Build the foundation for a career pivot into ML/AI — technical fluency through fast.ai, real product instincts through shipping, and industry context through reading. This quarter is the base everything else builds on.</div>
+      <div class="goal-list">
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">fast.ai Practical Deep Learning for Coders</div><div class="goal-detail">Complete lessons 1–4 this quarter</div></div></div>
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">Ship one app</div><div class="goal-detail">Vibe coding — keep scope small, something you'd actually use</div></div></div>
+        <div class="goal-item"><div class="goal-check"></div><div><div class="goal-text">Read The Alignment Problem</div><div class="goal-detail">Brian Christian — context for the full ML/AI arc</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARC -->
+  <div class="sh"><span class="sh-label">Quarterly Arc</span><div class="sh-line"></div></div>
+  <div class="arc">
+    <div class="arc-row arc-header">
+      <div class="arc-cell">Q</div>
+      <div class="arc-cell">Dates</div>
+      <div class="arc-cell">Ages</div>
+      <div class="arc-cell">Anchor Classes</div>
+    </div>
+    <div class="arc-row arc-active">
+      <div class="arc-cell"><span class="arc-q">Q2</span></div>
+      <div class="arc-cell" style="font-size:12px;">Apr 1 – Jul 12 <span class="arc-badge">now</span></div>
+      <div class="arc-cell" style="font-size:12px;">9–12 mo</div>
+      <div class="arc-cell" style="font-size:12px;">CrossFit B&M + Goldfish Swim</div>
+    </div>
+    <div class="arc-row">
+      <div class="arc-cell"><span class="arc-q">Q3</span></div>
+      <div class="arc-cell" style="font-size:12px;">Jul 13 – Oct</div>
+      <div class="arc-cell" style="font-size:12px;">12–15 mo</div>
+      <div class="arc-cell" style="font-size:12px;">Hootenanny Music + Goldfish Swim</div>
+    </div>
+    <div class="arc-row">
+      <div class="arc-cell"><span class="arc-q">Q4</span></div>
+      <div class="arc-cell" style="font-size:12px;">Oct – Jan</div>
+      <div class="arc-cell" style="font-size:12px;">15–18 mo</div>
+      <div class="arc-cell" style="font-size:12px;">Brooklyn Forest School + Goldfish Swim</div>
+    </div>
+    <div class="arc-row">
+      <div class="arc-cell"><span class="arc-q">Q1</span></div>
+      <div class="arc-cell" style="font-size:12px;">Jan – Apr</div>
+      <div class="arc-cell" style="font-size:12px;">18–21 mo</div>
+      <div class="arc-cell" style="font-size:12px;">My Gym + Goldfish Swim</div>
+    </div>
+  </div>
+  <div class="arc-note">Goldfish stays every quarter. From Q3 onward, open swim becomes a flex day option to build water confidence and safety skills faster.</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-rule"></div>
+  <div class="footer-text">
+    <strong>Flexibility isn't failure.</strong> The blocks exist to reduce friction, not add guilt. A flex day that turns into a do-nothing day is a recovery day. Those count too.<br><br>
+    <strong>The project time slot is load-bearing.</strong> It's not a treat — it's what keeps you cognitively alive inside the routine. If only one block survives a chaotic week, protect that one.
+  </div>
+</div>
+
+</body>
+</html>
