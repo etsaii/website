@@ -1,0 +1,53 @@
+/* css styles */
+
+/* Customize date-modified field label to show as "Date Published" */
+.listing-table th:has(+ th:contains("Title"))::before,
+.listing-table th:first-child::before {
+  content: "Date Published";
+}
+
+/* Alternative: target the date-modified column header more specifically */
+table.listing-table th:first-child {
+  /* This will be applied if Quarto uses a specific class */
+}
+
+/* Use attribute selector if Quarto adds data attributes */
+th[data-field="date-modified"]::before {
+  content: "Date Published";
+}
+
+/* Notes listing: Date 25%, Title 75% */
+#listing-listing .quarto-listing-table {
+  table-layout: fixed;
+  width: 100%;
+}
+#listing-listing .quarto-listing-table th:nth-child(1),
+#listing-listing .quarto-listing-table td:nth-child(1) {
+  width: 25%;
+}
+#listing-listing .quarto-listing-table th:nth-child(2),
+#listing-listing .quarto-listing-table td:nth-child(2) {
+  width: 75%;
+}
+
+/* Projects listing: keep left edge aligned, reserve a narrow metadata column */
+#listing-listing.quarto-listing-container-default .quarto-post {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: start;
+}
+#listing-listing.quarto-listing-container-default .quarto-post .body {
+  max-width: none;
+}
+#listing-listing.quarto-listing-container-default .quarto-post .metadata {
+  width: auto;
+}
+
+@media (max-width: 700px) {
+  #listing-listing.quarto-listing-container-default .quarto-post {
+    grid-template-columns: 1fr;
+  }
+  #listing-listing.quarto-listing-container-default .quarto-post .metadata {
+    width: auto;
+  }
+}

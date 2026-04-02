@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -206,6 +206,14 @@ Title
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-listing-date-sort="1775147718000" data-listing-file-modified-sort="1775147718431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515" data-listing-title-sort="Baby Stack" data-listing-filename-sort="baby-stack.md">
+<td>
+<span class="listing-date">Apr 2, 2026</span>
+</td>
+<td>
+<a href="./notes/baby-stack.html" class="title listing-title">Baby Stack</a>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">

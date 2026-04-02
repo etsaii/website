@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -269,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="relationship-of-four-factors-with-overall-srs" class="level4 page-columns page-full">
 <h4 class="anchored" data-anchor-id="relationship-of-four-factors-with-overall-srs">Relationship of Four Factors with Overall SRS</h4>
 <p>Once each of these metrics has been calculated, let’s evaulate the impact each metric has on the overall simple rating system of the team.</p>
-<div id="fd074353" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="8">
+<div id="9f2015c6" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
@@ -307,12 +307,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display page-columns page-full">
 <div class="page-columns page-full">
 <figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-9-output-1.png" width="771" height="582" class="figure-img column-body"></p>
+<p class="page-columns page-full"><img src="2024-ncaa-analysis_files/figure-html/cell-9-output-1.png" width="775" height="581" class="figure-img column-body"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="9e3b953e" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="9">
+<div id="da9fda28" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the figure with four subplots</span></span>
@@ -362,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="offensive-defensive-efficiency" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="offensive-defensive-efficiency">Offensive &amp; Defensive Efficiency</h2>
 <p>In order for us to measure the offensive and defensive efficiency of each team, we’ll first calculate these stats for each team, this is their offense. For defense, we’ll calculate how well their opponents do in each of these stats when playing against them.</p>
-<div id="da9a747b" class="cell" data-execution_count="10">
+<div id="38a74afa" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Off_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Off_TOV%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -370,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sorted_df <span class="op">=</span> team_stats.sort_values(by<span class="op">=</span><span class="st">'Calc_Off_Eff'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>sorted_df[[<span class="st">'School'</span>, <span class="st">'Overall_SRS'</span>, <span class="st">'Calc_Off_Eff'</span>, <span class="st">'Calc_Off_eFG%'</span>, <span class="st">'Calc_ORB%'</span>, <span class="st">'Calc_Off_TOV%'</span>, <span class="st">'Calc_Off_FTR'</span>]].head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="70">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -494,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="6d28834a" class="cell" data-execution_count="11">
+<div id="70b3e2e4" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>team_stats[<span class="st">'Calc_Def_Eff'</span>] <span class="op">=</span> <span class="fl">32.333</span> <span class="op">+</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_eFG%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">+</span> <span class="fl">0.47</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Opp_ORB%'</span>] <span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="op">-</span> <span class="fl">1.55</span> <span class="op">*</span> team_stats[<span class="st">'Calc_Def_TOV%'</span>]<span class="op">*</span> <span class="dv">100</span> <span class="op">\</span></span>
@@ -502,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>sorted_df <span class="op">=</span> team_stats.sort_values(by<span class="op">=</span><span class="st">'Calc_Def_Eff'</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>sorted_df[[<span class="st">'School'</span>, <span class="st">'Overall_SRS'</span>, <span class="st">'Calc_Def_Eff'</span>, <span class="st">'Calc_Def_eFG%'</span>, <span class="st">'Calc_Opp_ORB%'</span>, <span class="st">'Calc_Def_TOV%'</span>, <span class="st">'Calc_Def_FTR'</span>]].head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="71">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
@@ -626,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="791d6852" class="cell page-columns page-full" data-fig-height="8" data-fig-width="8" data-execution_count="12">
+<div id="8532dfe8" class="cell page-columns page-full" data-fig-height="8" data-fig-width="8" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top_20 <span class="op">=</span> team_stats[team_stats[<span class="st">'Pct_Group'</span>] <span class="op">==</span> <span class="st">"Top 20%"</span>]</span>

@@ -21,10 +21,10 @@ Doors open 3pm. Purchased GA tix ([Tix](https://dice.fm/event/7dp5bp-alesso-22nd
 
 **Aug 29 (Saturday)** - Empire of the Sun @ Forest Hills Stadium, 6:30pm 
 
-**Sept 30 (Wednesday)** - Weezer @ Barclays, 7pm
+**Sept 30 (Wednesday)** - Weezer @ Barclays, 7pm  
 We have 2 extra tickets at $215 each, claim them and join us!
 
-**October 24 (Saturday)** - Diplo 5K
+**October 24 (Saturday)** - Diplo 5K  
 We're discovering that the best pregame to a day party might just be a 5K run.
 
 ---
